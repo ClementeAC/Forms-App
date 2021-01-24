@@ -1,0 +1,7 @@
+{
+  "name": "PruebaIonicAngular",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
