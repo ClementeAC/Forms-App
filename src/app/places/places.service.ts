@@ -1,3 +1,4 @@
+import { CommentStmt } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import {Place} from './place.model'
 
@@ -18,6 +19,12 @@ export class PlacesService {
       title: 'Statue of Liberty',
       imageURL: 'https://i.guim.co.uk/img/media/4a29dde46c17e8a07f98e4e5947d49964d074923/0_348_6000_3600/master/6000.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=88c75e6319ec9d3588bb6e17ae92ff68',
       comments: ['Awesome place', 'wonderful experience']
+    },
+    {
+      id: '3',
+      title: 'Tower of Pisa',
+      imageURL: 'https://upload.wikimedia.org/wikipedia/commons/6/66/The_Leaning_Tower_of_Pisa_SB.jpeg',
+      comments: []
     }
   ]
 
