@@ -24,7 +24,6 @@ export class PlaceDetailsPage implements OnInit {
       //redirect
       const recipeId = paramMap.get("placeId");
       this.place = this.placesService.getPlace(recipeId);
-      console.log(this.place);
     });
   }
 

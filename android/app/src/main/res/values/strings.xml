@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">PruebaIonicAngular</string>
+    <string name="title_activity_main">PruebaIonicAngular</string>
+    <string name="package_name">com.prueba1clemente.app</string>
+    <string name="custom_url_scheme">com.prueba1clemente.app</string>
+</resources>
