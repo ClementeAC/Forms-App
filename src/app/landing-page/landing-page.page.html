@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <!-- <ion-title>landing</ion-title> -->
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card class="welcome-card">
+    <ion-img
+      src="https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo3.jpg"
+    ></ion-img>
+    <ion-card-header>
+      <ion-card-subtitle>Hello!</ion-card-subtitle>
+      <ion-card-title>Welcome to "Name of App"</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Already a user? Click on Login to get into your account!</p>
+      <br />
+      <p>New here? Register to get started right away!</p>
+    </ion-card-content>
+  </ion-card>
+  <ion-card class="welcome-card">
+    <ion-img
+      src="https://www.hibelia.com/sites/default/files/news.jpg"
+    ></ion-img>
+    <ion-card-header>
+      <ion-card-subtitle>Updates</ion-card-subtitle>
+      <ion-card-title>What's new in Version 0.0.1?</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>In this update we basically bring nothing, this is the first version duh ;)</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col>
+        <ion-button
+          color="primary"
+          expand="full"
+          color="primary"
+          (click)="login()"
+        >
+          Login
+          <ion-icon name="log-in" slot="start"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button
+          color="dark"
+          expand="full"
+          color="dark"
+          (click)="register()"
+        >
+          Register
+          <ion-icon name="clipboard" slot="start"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

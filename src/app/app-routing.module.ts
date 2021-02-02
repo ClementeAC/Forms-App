@@ -28,6 +28,18 @@ const routes: Routes = [
   {
     path: 'new-place',
     loadChildren: () => import('./places/place-add/place-add.module').then(m => m.PlaceAddPageModule)
+  },
+  {
+    path: 'sign-in',
+    loadChildren: () => import('./sign-in/sign-in.module').then( m => m.SignInPageModule)
+  },
+  {
+    path: 'landing-page',
+    loadChildren: () => import('./landing-page/landing-page.module').then( m => m.LandingPagePageModule)
+  },
+  {
+    path: 'log-in',
+    loadChildren: () => import('./log-in/log-in.module').then( m => m.LogInPageModule)
   }
 ];
 
