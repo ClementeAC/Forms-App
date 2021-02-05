@@ -9,7 +9,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'places',
+    redirectTo: 'landing-page',
     pathMatch: 'full'
   },
   {

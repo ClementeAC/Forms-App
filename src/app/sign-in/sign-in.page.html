@@ -1,23 +1,71 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Sign In
-    </ion-title>
-  </ion-toolbar>
+  <div class="login-header ion-padding">
+    <img class="logo-img" src="../../assets/img/PngItem_1494576.png" />
+  </div>
 </ion-header>
 
 <ion-content class="auth-form">
-  <ion-grid>
-    <ion-row>
-      <ion-col align-self-center>
-        <ion-button [routerLink]="['/registration']" expand="block" color="primary">Register</ion-button>
-
-        <span class="divider line one-line">or</span>
-
-        <span class="already">Already a user?</span>
-
-        <ion-button [routerLink]="['/login']" expand="block" color="danger">Sign In</ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <form ngSubmit="register()">
+    <div class="circle1"></div>
+    <div class="circle2"></div>
+    <div class="circle3"></div>
+    <div class="input-group">
+      <ion-item color="tertiary">
+        <ion-label position="stacked">Username</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <!-- 
+      <div
+        *ngIf="(username.dirty || username.touched) && username.errors"
+        class="errors"
+      >
+        <span *ngIf="username.errors?.required">Username is required</span>
+        <span *ngIf="username.errors?.minlength"
+          >Username needs to be at least 4 characters long</span
+        >
+      </div>
+      -->
+      <ion-item color="tertiary">
+        <ion-label position="stacked">Email</ion-label>
+        <ion-input type="email"></ion-input>
+      </ion-item>
+      <!-- 
+         <div
+        *ngIf="(email.dirty || email.touched) && email.errors"
+        class="errors"
+      >
+        <span *ngIf="email.errors?.required">Email is required</span>
+        <span *ngIf="email.errors?.email">Email is invalid</span>
+      </div>
+      -->
+      <ion-item color="tertiary">
+        <ion-label position="stacked">Password</ion-label>
+        <ion-input type="password"></ion-input>
+      </ion-item>
+      <ion-item color="tertiary">
+        <ion-label position="stacked">Confirm Password</ion-label>
+        <ion-input type="password"></ion-input>
+      </ion-item>
+    </div>
+    <ion-grid>
+      <ion-row>
+        <ion-col align-self-center>
+          <ion-button
+            [routerLink]="['/registration']"
+            expand="block"
+            color="secondary"
+            >Register
+          </ion-button>
+          <ion-button
+            type="button"
+            expand="block"
+            color="dark"
+            fill="clear"
+            (click)="login()"
+            >Already a member? Log In!
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
 </ion-content>
