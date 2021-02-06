@@ -33,8 +33,8 @@ export class AuthenticationService {
 
 
   //Aquí hay que configurar el API de nuestro Login
-  login(credentials: {email, password}): Observable<any> {
-    return this.http.post(`https://reqres.in/api/login`, credentials).pipe(
+  login(credentials: {username, password}): Observable<any> {
+    return this.http.post(`https://api-rest-s.herokuapp.com/api/users/login`, credentials).pipe(
       map((data: any) => data.token),
       switchMap(token => {
         return from(Storage.set({key: TOKEN_KEY, value: token}));

@@ -22,7 +22,7 @@ export class LogInPage implements OnInit {
 
   ngOnInit() {
     this.credentials = this.fb.group({
-      email: ["", [Validators.required, Validators.email]],
+      username: ["", [Validators.required]],
       password: ["", [Validators.required, Validators.minLength(6)]],
     });
   }
@@ -47,8 +47,8 @@ export class LogInPage implements OnInit {
       }
     );
   }
-  get email() {
-    return this.credentials.get("email");
+  get username() {
+    return this.credentials.get("username");
   }
 
   get password() {
