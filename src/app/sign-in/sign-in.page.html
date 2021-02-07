@@ -1,20 +1,11 @@
-<ion-header>
-  <div class="login-header ion-padding">
-    <img class="logo-img" src="../../assets/img/PngItem_1494576.png" />
-  </div>
-</ion-header>
-
 <ion-content class="auth-form">
-  <form ngSubmit="register()">
-    <div class="circle1"></div>
-    <div class="circle2"></div>
-    <div class="circle3"></div>
-    <div class="input-group">
-      <ion-item color="tertiary">
-        <ion-label position="stacked">Username</ion-label>
-        <ion-input></ion-input>
-      </ion-item>
-      <!-- 
+  <div class="container">
+    <form ngSubmit="register()">
+      <p>Register</p>
+      <div class="input-group">
+        <ion-input placeholder="Username"></ion-input>
+
+        <!-- 
       <div
         *ngIf="(username.dirty || username.touched) && username.errors"
         class="errors"
@@ -25,11 +16,8 @@
         >
       </div>
       -->
-      <ion-item color="tertiary">
-        <ion-label position="stacked">Email</ion-label>
-        <ion-input type="email"></ion-input>
-      </ion-item>
-      <!-- 
+        <ion-input type="email" placeholder="Email"></ion-input>
+        <!-- 
          <div
         *ngIf="(email.dirty || email.touched) && email.errors"
         class="errors"
@@ -38,34 +26,34 @@
         <span *ngIf="email.errors?.email">Email is invalid</span>
       </div>
       -->
-      <ion-item color="tertiary">
-        <ion-label position="stacked">Password</ion-label>
-        <ion-input type="password"></ion-input>
-      </ion-item>
-      <ion-item color="tertiary">
-        <ion-label position="stacked">Confirm Password</ion-label>
-        <ion-input type="password"></ion-input>
-      </ion-item>
-    </div>
-    <ion-grid>
-      <ion-row>
-        <ion-col align-self-center>
-          <ion-button
-            [routerLink]="['/registration']"
-            expand="block"
-            color="secondary"
-            >Register
-          </ion-button>
-          <ion-button
-            type="button"
-            expand="block"
-            color="dark"
+        <ion-input type="password" placeholder="Password"></ion-input>
+        <ion-input type="password" placeholder="Confirm Password"></ion-input>
+      </div>
+      <ion-grid>
+        <ion-row>
+          <ion-col align-self-center>
+            <ion-button
             fill="clear"
-            (click)="login()"
-            >Already a member? Log In!
-          </ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </form>
+            class="RegisterBtn"
+              [routerLink]="['/registration']"
+              >Register
+            </ion-button>
+            <ion-button
+            class="isUser"
+              fill="clear"
+              (click)="login()"
+              >Not new?
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </div>
+  <div class="drops">
+    <div class="drop drop-1"></div>
+    <div class="drop drop-2"></div>
+    <div class="drop drop-3"></div>
+    <div class="drop drop-4"></div>
+    <div class="drop drop-5"></div>
+  </div>
 </ion-content>

@@ -1,5 +1,10 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from "@angular/forms";
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+} from "@angular/forms";
 import { AlertController, LoadingController } from "@ionic/angular";
 import { Router } from "@angular/router";
 import { AuthenticationService } from "../services/authentication.service";
@@ -62,6 +67,6 @@ export class SignInPage implements OnInit {
   }
   */
   login() {
-  this.router.navigate(["./log-in"]);
-}
+    this.router.navigate(["./log-in"]);
+  }
 }

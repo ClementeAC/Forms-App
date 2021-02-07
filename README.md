@@ -4,3 +4,7 @@
 - Home
 - Login
 - Register
+
+### Hecho por:
+- Clemente Castejón
+- Heberto Urribarri

@@ -1,54 +1,49 @@
-<ion-header>
-  <div class="login-header ion-padding">
-    <img class="logo-img" src="../../assets/img/PngItem_1494576.png" />
-  </div>
-</ion-header>
-
 <ion-content>
-  <div class="circle1"></div>
-  <div class="circle2"></div>
-  <div class="circle3"></div>
-  <form (ngSubmit)="login()" [formGroup]="credentials">
-    <div class="input-group">
-      <ion-item color="tertiary">
-        <ion-label position="stacked">Username</ion-label>
-        <ion-input type="text" formControlName="username"></ion-input>
-      </ion-item>
-      <div
-        *ngIf="(username.dirty || username.touched) && username.errors"
-        class="errors"
-      >
-        <span *ngIf="username.errors?.required">Username is required</span>
-      </div>
-      <ion-item color="tertiary">
-        <ion-label position="stacked">Password</ion-label>
-        <ion-input type="password" formControlName="password"></ion-input>
-      </ion-item>
-      <div
-        *ngIf="(password.dirty || password.touched) && password.errors"
-        class="errors"
-      >
-        <span *ngIf="password.errors?.required">Password is required</span>
-        <span *ngIf="password.errors?.minlength"
-          >Password needs to be at least 6 characters long</span
+  <div class="container">
+    <form (ngSubmit)="login()" [formGroup]="credentials">
+      <p>Welcome back!</p>
+      <div class="input-group">
+        <ion-input
+          type="text"
+          formControlName="username"
+          placeholder="Username"
+        ></ion-input>
+        <div
+          *ngIf="(username.dirty || username.touched) && username.errors"
+          class="errors"
         >
+          <span *ngIf="username.errors?.required">Username is required</span>
+        </div>
+        <ion-input
+          type="password"
+          formControlName="password"
+          placeholder="Password"
+        ></ion-input>
+        <div
+          *ngIf="(password.dirty || password.touched) && password.errors"
+          class="errors"
+        >
+          <span *ngIf="password.errors?.required">Password is required</span>
+        </div>
       </div>
-    </div>
 
-    <ion-button
-      type="submit"
-      expand="block"
-      [disabled]="!credentials.valid"
-      color="tertiary"
-      >Log in</ion-button
-    >
-    <ion-button
-      type="button"
-      expand="block"
-      color="dark"
-      fill="clear"
-      (click)="register()"
-      >Not yet a member? Sign up!
-    </ion-button>
-  </form>
+      <ion-button
+        fill="clear"
+        class="Login"
+        type="submit"
+        [disabled]="!credentials.valid"
+        >Log in</ion-button
+      >
+      <ion-button fill="clear" class="notUser" type="button" (click)="register()"
+        >Not registered?
+      </ion-button>
+    </form>
+  </div>
+  <div class="drops">
+    <div class="drop drop-1"></div>
+    <div class="drop drop-2"></div>
+    <div class="drop drop-3"></div>
+    <div class="drop drop-4"></div>
+    <div class="drop drop-5"></div>
+  </div>
 </ion-content>
