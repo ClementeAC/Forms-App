@@ -13,7 +13,7 @@ export class SignInPage implements OnInit {
   credentials: FormGroup;
 
   constructor(
-    /*private fb: FormBuilder,*/
+    private fb: FormBuilder,
     private authService: AuthenticationService,
     private alertController: AlertController,
     private router: Router,
@@ -21,22 +21,20 @@ export class SignInPage implements OnInit {
   ) {}
 
   ngOnInit() {
- /*
     this.credentials = this.fb.group({
-      username: [""],
-      email: [""],
-      password: [""],
-      confirmPassword: [""]
-    }, {validators: this.checkPasswords});
-   */
+      username: ["", [Validators.required, Validators.minLength(4)]],
+    email: ["", [Validators.required, Validators.email]],
+    password: ""/*, [Validators.required, Validators.minLength(6)]*///,
+      /*confirmPassword: ["", [Validators.required]]*/
+    }/*, {validators: this.checkPasswords}*/);
   }
 
-  /*
   async register() {
+    console.log('aqui toi');
     const loading = await this.loadingController.create();
     await loading.present();
 
-    this.authService.login(this.credentials.value).subscribe(
+    this.authService.register(this.credentials.value).subscribe(
       async (res) => {
         await loading.dismiss();
         this.router.navigateByUrl("/places", { replaceUrl: true });
@@ -44,7 +42,7 @@ export class SignInPage implements OnInit {
       async (res) => {
         await loading.dismiss();
         const alert = await this.alertController.create({
-          header: "Login failed",
+          header: "Register failed",
           message: res.error.error,
           buttons: ["OK"],
         });
@@ -52,9 +50,17 @@ export class SignInPage implements OnInit {
       }
     );
   }
-  */
 
- 
+  get username() {
+    return this.credentials.get("username");
+  }
+  get email() {
+    return this.credentials.get("email");
+  }
+  get password() {
+    return this.credentials.get("password");
+  }
+
   /*checkPasswords(group: FormGroup) {
     const password = group.get('password').value;
     const confirmPassword = group.get('confirmPassword').value;
