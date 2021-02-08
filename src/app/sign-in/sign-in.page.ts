@@ -1,10 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import {
-  FormBuilder,
-  FormGroup,
-  Validators,
-  ReactiveFormsModule,
-} from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AlertController, LoadingController } from "@ionic/angular";
 import { Router } from "@angular/router";
 import { AuthenticationService } from "../services/authentication.service";
@@ -15,10 +10,10 @@ import { AuthenticationService } from "../services/authentication.service";
   styleUrls: ["./sign-in.page.scss"],
 })
 export class SignInPage implements OnInit {
-  //credentials: FormGroup;
+  credentials: FormGroup;
 
   constructor(
-    //private fb: FormBuilder,
+    /*private fb: FormBuilder,*/
     private authService: AuthenticationService,
     private alertController: AlertController,
     private router: Router,
@@ -26,14 +21,14 @@ export class SignInPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    /*
+ /*
     this.credentials = this.fb.group({
-      username: ["", [Validators.required, Validators.minLength(4)]],
-      email: ["", [Validators.required, Validators.email]],
-      password: ["", [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ["", [Validators.required, Validators.minLength(6)]]
+      username: [""],
+      email: [""],
+      password: [""],
+      confirmPassword: [""]
     }, {validators: this.checkPasswords});
-    */
+   */
   }
 
   /*
@@ -59,13 +54,13 @@ export class SignInPage implements OnInit {
   }
   */
 
-  /*
-  checkPasswords(group: FormGroup) {
-  const password = group.get('password').value;
-  const confirmPassword = group.get('confirmPassword').value;
-  return password === confirmPassword ? null : { notSame: true }     
-  }
-  */
+ 
+  /*checkPasswords(group: FormGroup) {
+    const password = group.get('password').value;
+    const confirmPassword = group.get('confirmPassword').value;
+    return password === confirmPassword ? null : { notSame: true }     
+  }*/
+
   login() {
     this.router.navigate(["./log-in"]);
   }

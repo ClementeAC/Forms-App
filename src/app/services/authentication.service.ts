@@ -29,8 +29,19 @@ export class AuthenticationService {
     }
   }
 
-  //register()
-
+  /*/
+  register(credentials: {username, email, password}): Observable<any> {
+    return this.http.post(`https://api-rest-s.herokuapp.com/api/users/register`, credentials).pipe(
+      map((data: any) => data.token),
+      switchMap(token => {
+        return from(Storage.set({key: TOKEN_KEY, value: token}));
+      }),
+      tap(_ => {
+        this.isAuthenticated.next(true);
+      })
+    )
+  }
+*/
 
   //Aquí hay que configurar el API de nuestro Login
   login(credentials: {username, password}): Observable<any> {
