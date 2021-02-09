@@ -1,32 +1,28 @@
 <ion-content> 
   <div class="container">
-    <form (ngSubmit)="register()"  [formGroup]="credentials">
+    <form (ngSubmit)="register()" [formGroup]="credentials">
       <p>Register</p>
       <div class="input-group">
         <ion-input type="text" formControlName="username" placeholder="Username"></ion-input>
 
-      <div
-        *ngIf="(username.dirty || username.touched) && username.errors"
-        class="errors"
-      >
-        <span *ngIf="username.errors?.required">Username is required</span>
-        <span *ngIf="username.errors?.minlength"
-          >Username needs to be at least 4 characters long</span
-        >
-      </div>
+        <div *ngIf="(username.dirty || username.touched) && username.errors" class="errors">
+          <span *ngIf="username.errors?.required">Username is required</span>
+          <span *ngIf="username.errors?.minlength">Username needs to be at least 4 long</span>
+        </div>
 
-      <ion-input type="email" formControlName="email" placeholder="Email"></ion-input>
- 
-      <div *ngIf="(email.dirty || email.touched) && email.errors" class="errors">
-        <span *ngIf="email.errors?.required">Email is required</span>
-        <span *ngIf="email.errors?.email">Email is invalid</span>
-      </div>
+        <ion-input type="email" formControlName="email" placeholder="Email"></ion-input>
+  
+        <div *ngIf="(email.dirty || email.touched) && email.errors" class="errors">
+          <span *ngIf="email.errors?.required">Email is required</span>
+          <span *ngIf="email.errors?.email">Email is invalid</span>
+        </div>
 
         <ion-input type="password" formControlName="password" placeholder="Password"></ion-input>
-        <!--<div *ngIf="(password.dirty || password.touched) && password.errors" class="errors">
+        
+        <div *ngIf="(password.dirty || password.touched) && password.errors" class="errors">
           <span *ngIf="password.errors?.required">Password is required</span>
-          <span *ngIf="password.errors?.minLength">Password needs to be at least 6 characters long</span>
-        </div>-->
+          <span *ngIf="password.errors?.minLength"> Password needs more of 6 characters</span>
+        </div>
 
         <!-- <ion-input type="password" formControlName="confirmPassword" placeholder="Confirm Password"></ion-input>
         <div *ngIf="(confirmPassword.dirty || confirmPassword.touched) && confirmPassword.errors" class="errors">
