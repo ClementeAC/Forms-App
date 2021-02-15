@@ -24,9 +24,9 @@ export class SignInPage implements OnInit {
     this.credentials = this.fb.group({
       username: ["", [Validators.required, Validators.minLength(4)]],
       email: ["", [Validators.required, Validators.email]],
-      password: ["", [Validators.required, Validators.minLength(4)]]
-      /*confirmPassword: ["", [Validators.required]]*/
-    }/*, {validators: this.checkPasswords}*/);
+      password: ["", [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ["", [Validators.required, Validators.minLength(6)]]
+    });
   }
 
   async register() {
@@ -61,11 +61,9 @@ export class SignInPage implements OnInit {
     return this.credentials.get("password");
   }
 
-  /*checkPasswords(group: FormGroup) {
-    const password = group.get('password').value;
-    const confirmPassword = group.get('confirmPassword').value;
-    return password === confirmPassword ? null : { notSame: true }     
-  }*/
+  get confirmPassword(){
+    return this.credentials.get("confirmPassword");
+  }
 
   login() {
     this.router.navigate(["./log-in"]);
