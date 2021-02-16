@@ -1,0 +1,120 @@
+$white: rgba(255, 255, 255, 0.3);
+
+ion-content {
+  --ion-background-color: linear-gradient(45deg, #fc466b, #3f5efb);
+}
+
+ion-card {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(0.2rem);
+  z-index: 4;
+}
+
+ion-toolbar {
+  --ion-color-primary: white;
+  --ion-color-primary-contrast: black;
+}
+
+ion-fab-button {
+  --ion-color-primary: transparent;
+  backdrop-filter: blur(25px);
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.2)
+  );
+  border-radius: 50%;
+}
+
+h3 {
+  color: black;
+  font-size: medium;
+}
+
+.card-icon {
+  color: black;
+  position: relative;
+  left: 350px;
+}
+
+.drop {
+  background: $white;
+  backdrop-filter: blur(3px);
+  border-radius: 10px;
+  border-left: 1px solid $white;
+  border-top: 1px solid $white;
+  box-shadow: 10px 10px 60px -8px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  transition: all 0.2s ease;
+
+  &-1 {
+    height: 80px;
+    width: 80px;
+    top: 140px;
+    left: 10px;
+    z-index: 1;
+  }
+
+  &-2 {
+    height: 80px;
+    width: 80px;
+    bottom: 75px;
+    left: 20px;
+  }
+
+  &-3 {
+    height: 100px;
+    width: 100px;
+    bottom: 70px;
+    right: 20px;
+    z-index: -1;
+  }
+
+  &-4 {
+    height: 120px;
+    width: 120px;
+    top: 40px;
+    right: 5px;
+    z-index: -1;
+  }
+
+  &-5 {
+    height: 60px;
+    width: 60px;
+    top: 70px;
+    right: 35px;
+    z-index: 1;
+  }
+
+  &-6 {
+    height: 60px;
+    width: 60px;
+    top: 320px;
+    right: 295px;
+    z-index: 1;
+  }
+
+  &-7 {
+    height: 90px;
+    width: 90px;
+    top: 500px;
+    right: 205px;
+    z-index: 1;
+  }
+
+  &-8 {
+    height: 130px;
+    width: 130px;
+    top: 260px;
+    right: 35px;
+    z-index: 1;
+  }
+
+  &-9 {
+    height: 90px;
+    width: 90px;
+    top: 240px;
+    right: 15px;
+    z-index: 1;
+  }
+}

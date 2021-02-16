@@ -1,0 +1,41 @@
+<ion-content>
+  <div>
+    <ion-card class="form-card" button="true">
+      <ion-card-header>
+        <ion-card-subtitle>Form</ion-card-subtitle>
+        <ion-card-title class="titles"
+          >Cual es tu helado favorito?</ion-card-title
+        >
+      </ion-card-header>
+      <ion-card-content>
+        <p>Una pregunta que ha plagado la humanidad desde tiempos remotos.</p>
+        <h3>Created by: User</h3>
+        <ion-icon name="chevron-forward-outline" class="card-icon"></ion-icon>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="primary">
+      <ion-icon name="menu-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button color="light" (click)="addNewPlace()">
+        <ion-icon name="cog-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="light" (click)="goToHome()">
+        <ion-icon name="person-circle-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+  <div class="drops">
+    <div class="drop drop-1"></div>
+    <div class="drop drop-2"></div>
+    <div class="drop drop-3"></div>
+    <div class="drop drop-4"></div>
+    <div class="drop drop-5"></div>
+    <div class="drop drop-6"></div>
+    <div class="drop drop-7"></div>
+    <div class="drop drop-8"></div>
+    <div class="drop drop-9"></div>
+  </div>
+</ion-content>

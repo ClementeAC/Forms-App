@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { PlaceDetailsPage } from './places/place-details/place-details.page';
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    path: '',
+    redirectTo: 'sign-in',
+    pathMatch: 'full'
   },
   {
-    path: '',
-    redirectTo: 'landing-page',
-    pathMatch: 'full'
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
     path: 'places',
@@ -40,10 +39,21 @@ const routes: Routes = [
   {
     path: 'log-in',
     loadChildren: () => import('./log-in/log-in.module').then( m => m.LogInPageModule)
-  },  {
+  },
+  {
     path: 'profile',
     loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+  },
+  {
+    path: 'settings',
+    loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
+  },
+  {
+    path: 'main-menu',
+    loadChildren: () => import('./main-menu/main-menu.module').then( m => m.MainMenuPageModule)
   }
+
+
 
 ];
 
