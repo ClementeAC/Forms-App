@@ -1,9 +1,23 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>profile</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-
+  <div class="profile-data">
+    <ion-button fill="clear" (click)="editInfo(1)">Edit</ion-button>
+    <img src="../../assets/img/emojipng.com-35939.png" />
+    <p class="username">Username</p>
+  </div>
+  <div class="forms-answered">
+    <p class="forms-answered-title">Forms answered:</p>
+    <p class="forms-answered-value">69</p>
+  </div>
+  <div class="data-edit" *ngIf="isShowing === 1">
+    <ion-icon
+      class="close-icon"
+      name="close-circle-outline"
+      (click)="editInfo(2)"
+    ></ion-icon>
+  </div>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="primary" (click)="goBack()">
+      <ion-icon name="return-up-back-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

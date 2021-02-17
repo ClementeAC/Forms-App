@@ -1,0 +1,100 @@
+$white: rgba(255, 255, 255, 0.3);
+
+ion-content {
+  --ion-background-color: linear-gradient(45deg, #fc466b, #3f5efb);
+}
+
+img {
+  background: white;
+  border-radius: 50%;
+  height: 125px;
+  width: 125px;
+  margin-top: 30px;
+  margin-bottom: none;
+  border: 3px solid black;
+}
+
+ion-button {
+  --ripple-color: transparent;
+  position: absolute;
+  color: rgba(255, 255, 255, 0.6);
+  left: 1px;
+  top: 10px;
+}
+
+ion-fab-button {
+  --ion-color-primary: transparent;
+  backdrop-filter: blur(25px);
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.2)
+  );
+  border-radius: 50%;
+}
+.username {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: x-large;
+}
+.profile-data {
+  background: $white;
+  backdrop-filter: blur(3px);
+  border-radius: 10px;
+  border-left: 1px solid $white;
+  border-top: 1px solid $white;
+  box-shadow: 10px 10px 60px -8px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 5vh;
+  right: 2.5vh;
+  height: 30vh;
+  width: 90vw;
+  text-align: center;
+}
+.forms-answered {
+  background: $white;
+  backdrop-filter: blur(3px);
+  border-radius: 10px;
+  border-left: 1px solid $white;
+  border-top: 1px solid $white;
+  box-shadow: 10px 10px 60px -8px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 36.5vh;
+  right: 2.5vh;
+  height: 15vh;
+  width: 90vw;
+  text-align: center;
+}
+
+.forms-answered-title {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: x-large;
+}
+
+.forms-answered-value {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: x-large;
+}
+
+.data-edit {
+  background: $white;
+  backdrop-filter: blur(3px);
+  border-radius: 10px;
+  border-left: 1px solid $white;
+  border-top: 1px solid $white;
+  box-shadow: 10px 10px 60px -8px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 53vh;
+  right: 2.5vh;
+  height: 70vh;
+  width: 90vw;
+  text-align: center;
+}
+
+.close-icon {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  color: $white;
+  top: 5px;
+  left: 5px;
+}

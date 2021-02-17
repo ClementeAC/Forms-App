@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-main-menu',
@@ -8,7 +9,7 @@ import { MenuController } from '@ionic/angular';
 })
 export class MainMenuPage implements OnInit {
 
-  constructor(private menu: MenuController) { }
+  constructor(private menu: MenuController, private router: Router) { }
 
   openFirst(){
     this.menu.enable(true, 'first');
@@ -17,5 +18,10 @@ export class MainMenuPage implements OnInit {
 
   ngOnInit() {
   }
+
+  goToProfile(){
+    this.router.navigate(['./profile'])
+  }
+
 
 }
