@@ -25,19 +25,19 @@ export class SignInPage implements OnInit {
       username: ["", [Validators.required, Validators.minLength(4)]],
       email: ["", [Validators.required, Validators.email]],
       password: ["", [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ["", [Validators.required, Validators.minLength(6)]]
+      confirmPassword: ["", [Validators.required, Validators.minLength(6)]],
     });
   }
 
   async register() {
-    console.log('aqui toi');
+    console.log("aqui toi");
     const loading = await this.loadingController.create();
     await loading.present();
 
     this.authService.register(this.credentials.value).subscribe(
       async (res) => {
         await loading.dismiss();
-        this.router.navigateByUrl("/places", { replaceUrl: true });
+        this.router.navigateByUrl("/main-menu", { replaceUrl: true });
       },
       async (res) => {
         await loading.dismiss();
@@ -61,7 +61,7 @@ export class SignInPage implements OnInit {
     return this.credentials.get("password");
   }
 
-  get confirmPassword(){
+  get confirmPassword() {
     return this.credentials.get("confirmPassword");
   }
 
