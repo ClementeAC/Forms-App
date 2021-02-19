@@ -22,6 +22,23 @@ ion-button {
   top: 10px;
 }
 
+ion-input {
+  --ion-color-primary: white;
+  --ion-color-primary-shade: transparent;
+  background: transparent;
+  width: 200px;
+  height: 50px;
+  padding: 1em;
+  margin-bottom: 1em;
+  border: none;
+  border-left: 1px solid $white;
+  border-top: 1px solid $white;
+  border-radius: 5000px;
+  backdrop-filter: blur(5px);
+  box-shadow: 4px 4px 60px rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+
 ion-fab-button {
   --ion-color-primary: transparent;
   backdrop-filter: blur(25px);
@@ -97,4 +114,41 @@ ion-fab-button {
   color: $white;
   top: 5px;
   left: 5px;
+}
+
+.edit-data {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: x-large;
+}
+
+.input-group {
+  transform: translate(22%, 0%);
+}
+
+.save {
+  --ion-color-primary: white;
+  --ion-color-primary-shade: transparent;
+  background: transparent;
+  width: 200px;
+  height: 50px;
+  padding: 1em;
+  margin-bottom: 1em;
+  border: none;
+  border-left: 1px solid $white;
+  border-top: 1px solid $white;
+  border-radius: 5000px;
+  backdrop-filter: blur(5px);
+  box-shadow: 4px 4px 60px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  position: relative;
+  transform: translate(-42%, 0%);
+}
+
+.errors {
+  transform: translate(-22%, -60%);
+  font-size: small;
+  color: rgba(255, 0, 0, 0.8);
+  background: transparent;
+  padding-left: 15px;
+  padding-bottom: 5px;
 }

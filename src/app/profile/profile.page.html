@@ -14,6 +14,76 @@
       name="close-circle-outline"
       (click)="editInfo(2)"
     ></ion-icon>
+    <p class="edit-data">Edit user data</p>
+    <form (ngSubmit)="update()" [formGroup]="credentials">
+      <div class="input-group">
+        <ion-input
+          type="text"
+          placeholder="New username"
+          formControlName="username"
+        ></ion-input>
+        <div
+          *ngIf="(username.dirty || username.touched) && username.errors"
+          class="errors"
+        >
+          <span *ngIf="username.errors?.required">Username is required</span>
+          <span *ngIf="username.errors?.minlength">Username is too short</span>
+        </div>
+        <ion-input
+          type="password"
+          placeholder="Old password"
+          formControlName="oldPassword"
+        ></ion-input>
+        <div
+          *ngIf="(oldPassword.dirty || oldPassword.touched) && oldPassword.errors"
+          class="errors"
+        >
+          <span *ngIf="oldPassword.errors?.required"
+            >Old Password is required</span
+          >
+        </div>
+        <ion-input
+          type="password"
+          placeholder="New password"
+          formControlName="newPassword"
+        ></ion-input>
+        <div
+          *ngIf="(newPassword.dirty || newPassword.touched) && newPassword.errors"
+          class="errors"
+        >
+          <span *ngIf="newPassword.errors?.required">Password is required</span>
+          <span *ngIf="newPassword.errors?.minlength"
+            >Password is too short</span
+          >
+        </div>
+        <ion-input
+          type="password"
+          placeholder="Confirm new password"
+          formControlName="confirmNewPassword"
+        ></ion-input>
+        <div
+          *ngIf="(confirmNewPassword.dirty || confirmNewPassword.touched) && confirmNewPassword.errors"
+          class="errors"
+        >
+          <span *ngIf="confirmNewPassword.errors?.required"
+            >Password is required</span
+          >
+          <span *ngIf="confirmNewPassword.errors?.minlength"
+            >Password is too short</span
+          >
+        </div>
+        <span class="errors" *ngIf="newPassword.value!=confirmNewPassword.value"
+          >Passwords must match</span
+        >
+        <ion-button
+          fill="clear"
+          class="save"
+          type="submit"
+          [disabled]="!credentials.valid || newPassword.value!=confirmNewPassword.value"
+          >Save Changes</ion-button
+        >
+      </div>
+    </form>
   </div>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button color="primary" (click)="goBack()">

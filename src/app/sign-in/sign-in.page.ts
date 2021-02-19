@@ -30,7 +30,6 @@ export class SignInPage implements OnInit {
   }
 
   async register() {
-    console.log("aqui toi");
     const loading = await this.loadingController.create();
     await loading.present();
 

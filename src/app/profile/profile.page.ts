@@ -1,5 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { AlertController, LoadingController } from "@ionic/angular";
+import { AuthenticationService } from "../services/authentication.service";
 
 @Component({
   selector: "app-profile",
@@ -7,11 +10,25 @@ import { Router } from "@angular/router";
   styleUrls: ["./profile.page.scss"],
 })
 export class ProfilePage implements OnInit {
-  constructor(private router: Router) {}
+  credentials: FormGroup;
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    private loadingController: LoadingController,
+    private alertController: AlertController,
+    private authService: AuthenticationService
+  ) {}
 
   isShowing = 2;
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.credentials = this.fb.group({
+      username: ["", [Validators.required, Validators.minLength(4)]],
+      oldPassword: ["", [Validators.required]],
+      newPassword: ["", [Validators.required, Validators.minLength(6)]],
+      confirmNewPassword: ["", [Validators.required, Validators.minLength(6)]],
+    });
+  }
 
   ionViewWillEnter() {
     this.isShowing = 2;
@@ -23,6 +40,40 @@ export class ProfilePage implements OnInit {
 
   editInfo(index) {
     this.isShowing = index;
-    console.log("pressed");
+  }
+
+  async update() {
+    const loading = await this.loadingController.create();
+    await loading.present();
+
+    this.authService.updateUserData(this.credentials.value).subscribe(
+      async (res) => {
+        await loading.dismiss();
+        this.isShowing = 2;
+      },
+      async (res) => {
+        await loading.dismiss();
+        const alert = await this.alertController.create({
+          header: "Update failed",
+          message: res.error.error,
+          buttons: ["OK"],
+        });
+        await alert.present();
+      }
+    );
+  }
+
+  get username() {
+    return this.credentials.get("username");
+  }
+  get oldPassword() {
+    return this.credentials.get("oldPassword");
+  }
+  get newPassword() {
+    return this.credentials.get("newPassword");
+  }
+
+  get confirmNewPassword() {
+    return this.credentials.get("confirmNewPassword");
   }
 }
