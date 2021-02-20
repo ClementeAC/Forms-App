@@ -141,7 +141,7 @@ ion-fab-button {
   box-shadow: 4px 4px 60px rgba(0, 0, 0, 0.2);
   color: #fff;
   position: relative;
-  transform: translate(-42%, 0%);
+  transform: translate(-42%, 50%);
 }
 
 .errors {
@@ -151,4 +151,9 @@ ion-fab-button {
   background: transparent;
   padding-left: 15px;
   padding-bottom: 5px;
+
+  &-match {
+    position: absolute;
+    left: 15vw;
+  }
 }
