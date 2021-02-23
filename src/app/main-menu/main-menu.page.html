@@ -1,15 +1,23 @@
 <ion-content>
-  <div>
+  <div *ngFor="let form of forms" [routerLink]="['/form', form.id]">
     <ion-card class="form-card" button="true">
       <ion-card-header>
         <ion-card-subtitle>Form</ion-card-subtitle>
-        <ion-card-title class="titles"
-          >Cual es tu helado favorito?</ion-card-title
-        >
+        <ion-card-title class="titles">{{form.title}}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        <p>Una pregunta que ha plagado la humanidad desde tiempos remotos.</p>
-        <h3>Created by: User</h3>
+        <p>{{form.description}}</p>
+        <ion-icon name="chevron-forward-outline" class="card-icon"></ion-icon>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <div *ngFor="let menu of menus" [routerLink]="['/main-menu', menu.id]">
+    <ion-card class="menu-card" button="true">
+      <ion-card-header>
+        <ion-card-subtitle> Menu </ion-card-subtitle>
+        <ion-card-title class="titles">{{menu.title_menu}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
         <ion-icon name="chevron-forward-outline" class="card-icon"></ion-icon>
       </ion-card-content>
     </ion-card>
