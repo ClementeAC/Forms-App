@@ -3,6 +3,8 @@ import { Router } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AlertController, LoadingController } from "@ionic/angular";
 import { AuthenticationService } from "../services/authentication.service";
+import { ModalController } from "@ionic/angular";
+import { AvatarModalPage } from "./avatar-modal/avatar-modal.page";
 
 @Component({
   selector: "app-profile",
@@ -16,7 +18,8 @@ export class ProfilePage implements OnInit {
     private fb: FormBuilder,
     private loadingController: LoadingController,
     private alertController: AlertController,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private modalController: ModalController
   ) {}
 
   isShowing = 2;
@@ -75,5 +78,12 @@ export class ProfilePage implements OnInit {
 
   get confirmNewPassword() {
     return this.credentials.get("confirmNewPassword");
+  }
+
+  async openModal() {
+    const modal = await this.modalController.create({
+      component: ModalController,
+    });
+    return await modal.present();
   }
 }

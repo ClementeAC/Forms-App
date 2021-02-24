@@ -2,6 +2,12 @@
   <div class="profile-data">
     <ion-button fill="clear" (click)="editInfo(1)">Edit</ion-button>
     <img src="../../assets/img/emojipng.com-35939.png" />
+    <ion-icon
+      class="edit-avatar"
+      *ngIf="isShowing === 1"
+      name="images-outline"
+      (click)="openModal()"
+    ></ion-icon>
     <p class="username">Username</p>
   </div>
   <div class="forms-answered">

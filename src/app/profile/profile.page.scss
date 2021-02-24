@@ -49,6 +49,16 @@ ion-fab-button {
   );
   border-radius: 50%;
 }
+
+.edit-avatar {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  border: 20px;
+  color: rgba(255, 255, 255, 0.8);
+  top: 9vh;
+  left: 39vw;
+}
 .username {
   color: rgba(255, 255, 255, 0.6);
   font-size: x-large;

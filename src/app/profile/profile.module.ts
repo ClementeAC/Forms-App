@@ -8,6 +8,8 @@ import { ProfilePageRoutingModule } from "./profile-routing.module";
 
 import { ProfilePage } from "./profile.page";
 
+import { AvatarModalPage } from "./avatar-modal/avatar-modal.page";
+
 @NgModule({
   imports: [
     CommonModule,
@@ -16,6 +18,7 @@ import { ProfilePage } from "./profile.page";
     ProfilePageRoutingModule,
     ReactiveFormsModule,
   ],
-  declarations: [ProfilePage],
+  declarations: [ProfilePage, AvatarModalPage],
+  entryComponents: [AvatarModalPage],
 })
 export class ProfilePageModule {}
