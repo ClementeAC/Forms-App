@@ -7,7 +7,18 @@ import { ModalController } from "@ionic/angular";
   styleUrls: ["./avatar-modal.page.scss"],
 })
 export class AvatarModalPage implements OnInit {
-  constructor() {}
+  constructor(private modalController: ModalController) {}
+
+  img = 0;
 
   ngOnInit() {}
+
+  async closeModal() {
+    await this.modalController.dismiss();
+  }
+
+  setImage(imageId) {
+    this.closeModal();
+    this.img = imageId;
+  }
 }
