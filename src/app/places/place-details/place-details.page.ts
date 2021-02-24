@@ -21,7 +21,6 @@ export class PlaceDetailsPage implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe((paramMap) => {
-      //redirect
       const recipeId = paramMap.get("placeId");
       this.place = this.placesService.getPlace(recipeId);
     });
