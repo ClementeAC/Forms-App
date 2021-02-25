@@ -18,7 +18,7 @@ export class MenusService {
 
   getMenu(menuId: string) {
     return this.http.get<any>(
-      "https://api-rest-s.herokuapp.com/api/forms/submenu/1"
+      "https://api-rest-s.herokuapp.com/api/forms/submenu/"+menuId
     );
   }
 }
