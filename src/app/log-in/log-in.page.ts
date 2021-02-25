@@ -11,6 +11,7 @@ import { AuthenticationService } from "../services/authentication.service";
 })
 export class LogInPage implements OnInit {
   credentials: FormGroup;
+  user: string;
 
   constructor(
     private fb: FormBuilder,
@@ -33,8 +34,13 @@ export class LogInPage implements OnInit {
 
     this.authService.login(this.credentials.value).subscribe(
       async (res) => {
+
+        this.user = res[0];
+        localStorage.setItem("user", JSON.stringify(this.user));
+
         await loading.dismiss();
-        this.router.navigateByUrl("/main-menu", { replaceUrl: true });
+        this.router.navigateByUrl("/prueba");
+        this.router.navigateByUrl("/profile", { replaceUrl: true });
       },
       async (res) => {
         await loading.dismiss();

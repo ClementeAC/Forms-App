@@ -16,6 +16,7 @@ export class AuthenticationService {
     null
   );
   token = "";
+
   constructor(private http: HttpClient) {
     this.loadToken();
   }
@@ -44,20 +45,21 @@ export class AuthenticationService {
         })
       );
   }
-
+ 
   //Aquí hay que configurar el API de nuestro Login
   login(credentials: { username; password }): Observable<any> {
     return this.http
-      .post(`https://api-rest-s.herokuapp.com/api/users/login`, credentials)
-      .pipe(
+      .post(`https://api-rest-s.herokuapp.com/api/users/login`, credentials);
+      /*.pipe(
         map((data: any) => data.token),
         switchMap((token) => {
-          return from(Storage.set({ key: TOKEN_KEY, value: token }));
+          return from(Storage.set({ key: TOKEN_KEY, value: token })); 
+
         }),
         tap((_) => {
           this.isAuthenticated.next(true);
         })
-      );
+      );*/
   }
 
   logout(): Promise<void> {

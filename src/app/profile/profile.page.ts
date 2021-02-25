@@ -12,6 +12,7 @@ import { AvatarModalPage } from "./avatar-modal/avatar-modal.page";
   styleUrls: ["./profile.page.scss"],
 })
 export class ProfilePage implements OnInit {
+
   credentials: FormGroup;
   constructor(
     private router: Router,
@@ -19,12 +20,14 @@ export class ProfilePage implements OnInit {
     private loadingController: LoadingController,
     private alertController: AlertController,
     private authService: AuthenticationService,
-    private modalController: ModalController
-  ) {}
+    private modalController: ModalController,
+  ) { }
 
   isShowing = 2;
+  user: string;
 
   ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem('user'));
     this.credentials = this.fb.group({
       username: ["", [Validators.required, Validators.minLength(4)]],
       oldPassword: ["", [Validators.required]],
