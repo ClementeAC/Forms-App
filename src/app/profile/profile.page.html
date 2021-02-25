@@ -1,17 +1,14 @@
 <ion-content>
   <div class="profile-data">
-    <ion-button fill="clear" (click)="editInfo(1)">Edit</ion-button>
-<<<<<<< HEAD
+    <ion-button fill="clear" (click)="editInfo(1)" *ngIf="isShowing === 2">Edit</ion-button>
     <img [src]="user.avatar" />
-=======
-    <img src="../../assets/img/1.png" />
->>>>>>> de4f082fed4af456db7cb5b44ce84981f809d844
-    <ion-icon
-      class="edit-avatar"
-      *ngIf="isShowing === 1"
-      name="images-outline"
-      (click)="openModal()"
-    ></ion-icon>
+    <ion-button fill="clear" size="large" (click)="editInfo(2)" *ngIf="isShowing === 1">
+      <ion-icon name="close-circle-outline"></ion-icon>
+    </ion-button>
+
+    <ion-icon class="edit-avatar" *ngIf="isShowing === 1" name="images-outline"
+      (click)="openModal()"></ion-icon>
+
     <p class="username">{{user.username}}</p>
   </div>
   <div class="forms-answered">
@@ -19,11 +16,6 @@
     <p class="forms-answered-value">69</p>
   </div>
   <div class="data-edit" *ngIf="isShowing === 1">
-    <ion-icon
-      class="close-icon"
-      name="close-circle-outline"
-      (click)="editInfo(2)"
-    ></ion-icon>
     <p class="edit-data">Edit user data</p>
     <form (ngSubmit)="update()" [formGroup]="credentials">
       <div class="input-group">
@@ -98,7 +90,7 @@
     </form>
   </div>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button color="primary" (click)="goBack()">
+    <ion-fab-button color="primary" (click)="goBack()" *ngIf="isShowing === 2">
       <ion-icon name="return-up-back-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>

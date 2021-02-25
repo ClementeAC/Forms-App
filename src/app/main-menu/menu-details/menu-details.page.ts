@@ -9,7 +9,7 @@ import { Menus } from "../menus.model";
   styleUrls: ["./menu-details.page.scss"],
 })
 export class MenuDetailsPage implements OnInit {
-  menus: Menus;
+  menus: string[];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -20,7 +20,10 @@ export class MenuDetailsPage implements OnInit {
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe((paramMap) => {
       const recipeId = paramMap.get("menuId");
-      //this.menus = this.menusService.getMenu(recipeId);
+      this.menusService.getMenu(recipeId).subscribe((data) => {
+        this.menus = data;
+        console.log(data);
+      });
     });
   }
 }

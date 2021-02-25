@@ -37,4 +37,8 @@ export class MainMenuPage implements OnInit {
   goToProfile() {
     this.router.navigate(["./profile"]);
   }
+
+  addNewMenu(){
+    
+  }
 }

@@ -23,7 +23,7 @@ const routes: Routes = [
           ),
       },
       {
-        path: "menuId",
+        path: ":menuId",
         loadChildren: () =>
           import("./main-menu/menu-details/menu-details.module").then(
             (m) => m.MenuDetailsPageModule

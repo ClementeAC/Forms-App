@@ -1,17 +1,5 @@
 <ion-content>
-  <div *ngFor="let form of forms" [routerLink]="['/form', form.id]">
-    <ion-card class="form-card" button="true">
-      <ion-card-header>
-        <ion-card-subtitle>Form</ion-card-subtitle>
-        <ion-card-title class="titles">{{form.title}}</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p>{{form.description}}</p>
-        <ion-icon name="chevron-forward-outline" class="card-icon"></ion-icon>
-      </ion-card-content>
-    </ion-card>
-  </div>
-  <div *ngFor="let menu of menus" [routerLink]="['/main-menu', menu.id]">
+  <div *ngFor="let menu of menus" [routerLink]="['/main-menu', menu.menu_id]">
     <ion-card class="menu-card" button="true">
       <ion-card-header>
         <ion-card-subtitle> Menu </ion-card-subtitle>
@@ -27,11 +15,11 @@
       <ion-icon name="menu-outline"></ion-icon>
     </ion-fab-button>
     <ion-fab-list side="top">
-      <ion-fab-button color="light" (click)="addNewPlace()">
-        <ion-icon name="cog-outline"></ion-icon>
-      </ion-fab-button>
       <ion-fab-button color="light" (click)="goToProfile()">
         <ion-icon name="person-circle-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="light" (click)="addNewMenu()">
+        <ion-icon name="add-outline"></ion-icon>
       </ion-fab-button>
     </ion-fab-list>
   </ion-fab>
