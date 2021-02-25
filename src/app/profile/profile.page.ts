@@ -85,7 +85,7 @@ export class ProfilePage implements OnInit {
 
   async openModal() {
     const modal = await this.modalController.create({
-      component: ModalController,
+      component: AvatarModalPage,
     });
     return await modal.present();
   }

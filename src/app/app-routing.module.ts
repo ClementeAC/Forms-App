@@ -1,66 +1,93 @@
-import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'sign-in',
-    pathMatch: 'full'
+    path: "",
+    redirectTo: "sign-in",
+    pathMatch: "full",
   },
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    path: "home",
+    loadChildren: () =>
+      import("./home/home.module").then((m) => m.HomePageModule),
   },
   {
-    path: 'places',
-      children: [
-        {
-          path: "",
-          loadChildren: () => import('./places/places.module').then(m => m.PlacesPageModule)
-        },
-        {
-          path: ":placeId",
-          loadChildren: () => import('./places/place-details/place-details.module').then(m => m.PlaceDetailsPageModule)
-        }
-      ]
+    path: "main-menu",
+    children: [
+      {
+        path: "",
+        loadChildren: () =>
+          import("./main-menu/main-menu.module").then(
+            (m) => m.MainMenuPageModule
+          ),
+      },
+      {
+        path: "menuId",
+        loadChildren: () =>
+          import("./main-menu/menu-details/menu-details.module").then(
+            (m) => m.MenuDetailsPageModule
+          ),
+      },
+    ],
   },
   {
-    path: 'new-place',
-    loadChildren: () => import('./places/place-add/place-add.module').then(m => m.PlaceAddPageModule)
+    path: "places",
+    children: [
+      {
+        path: "",
+        loadChildren: () =>
+          import("./places/places.module").then((m) => m.PlacesPageModule),
+      },
+      {
+        path: ":placeId",
+        loadChildren: () =>
+          import("./places/place-details/place-details.module").then(
+            (m) => m.PlaceDetailsPageModule
+          ),
+      },
+    ],
   },
   {
-    path: 'sign-in',
-    loadChildren: () => import('./sign-in/sign-in.module').then( m => m.SignInPageModule)
+    path: "new-place",
+    loadChildren: () =>
+      import("./places/place-add/place-add.module").then(
+        (m) => m.PlaceAddPageModule
+      ),
   },
   {
-    path: 'landing-page',
-    loadChildren: () => import('./landing-page/landing-page.module').then( m => m.LandingPagePageModule)
+    path: "sign-in",
+    loadChildren: () =>
+      import("./sign-in/sign-in.module").then((m) => m.SignInPageModule),
   },
   {
-    path: 'log-in',
-    loadChildren: () => import('./log-in/log-in.module').then( m => m.LogInPageModule)
+    path: "landing-page",
+    loadChildren: () =>
+      import("./landing-page/landing-page.module").then(
+        (m) => m.LandingPagePageModule
+      ),
   },
   {
-    path: 'profile',
-    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+    path: "log-in",
+    loadChildren: () =>
+      import("./log-in/log-in.module").then((m) => m.LogInPageModule),
   },
   {
-    path: 'settings',
-    loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
+    path: "profile",
+    loadChildren: () =>
+      import("./profile/profile.module").then((m) => m.ProfilePageModule),
   },
   {
-    path: 'main-menu',
-    loadChildren: () => import('./main-menu/main-menu.module').then( m => m.MainMenuPageModule)
-  }
-
-
-
+    path: "settings",
+    loadChildren: () =>
+      import("./settings/settings.module").then((m) => m.SettingsPageModule),
+  },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

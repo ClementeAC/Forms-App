@@ -28,6 +28,12 @@ export class MainMenuPage implements OnInit {
     });
   }
 
+  ionViewWillEnter() {
+    this.menusService.getMenus().subscribe((data) => {
+      this.menus = data;
+    });
+  }
+
   goToProfile() {
     this.router.navigate(["./profile"]);
   }
