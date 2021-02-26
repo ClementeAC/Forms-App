@@ -24,24 +24,31 @@ export class ProfilePage implements OnInit {
   ) { }
 
   isShowing = 2;
-  user: string;
+  user: {
+    user_id: '',
+    username: '',
+    email: '',
+    password: '',
+    avatar: ''
+  };
 
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem('user'));
     this.credentials = this.fb.group({
       username: ["", [Validators.required, Validators.minLength(4)]],
       oldPassword: ["", [Validators.required]],
-      newPassword: ["", [Validators.required, Validators.minLength(6)]],
+      password: ["", [Validators.required, Validators.minLength(6)]],
       confirmNewPassword: ["", [Validators.required, Validators.minLength(6)]],
     });
   }
 
   ionViewWillEnter() {
     this.isShowing = 2;
+    this.user = JSON.parse(localStorage.getItem('user'));
   }
 
   goBack() {
-    this.router.navigate(["./main-menu"]);
+    this.router.navigate(["./main-menu"]); 
   }
 
   editInfo(index) {
@@ -52,7 +59,10 @@ export class ProfilePage implements OnInit {
     const loading = await this.loadingController.create();
     await loading.present();
 
-    this.authService.updateUserData(this.credentials.value).subscribe(
+    this.user.username = this.credentials.value.username;
+    this.user.password = this.credentials.value.password;
+
+    this.authService.updateUserData(this.user, this.user.user_id).subscribe(
       async (res) => {
         await loading.dismiss();
         this.isShowing = 2;
@@ -67,6 +77,7 @@ export class ProfilePage implements OnInit {
         await alert.present();
       }
     );
+    localStorage.setItem("user", JSON.stringify(this.user));
   }
 
   get username() {
@@ -75,8 +86,8 @@ export class ProfilePage implements OnInit {
   get oldPassword() {
     return this.credentials.get("oldPassword");
   }
-  get newPassword() {
-    return this.credentials.get("newPassword");
+  get password() {
+    return this.credentials.get("password");
   }
 
   get confirmNewPassword() {

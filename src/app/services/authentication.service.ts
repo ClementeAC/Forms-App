@@ -68,11 +68,13 @@ export class AuthenticationService {
   }
 
   updateUserData(credentials: {
-    username;
-    oldPassword;
-    newPassword;
-    confirmNewPassword;
-  }): Observable<any> {
-    return;
+    username,
+    avatar,
+    email,
+    password
+  }, user : string): Observable<any> {
+    console.log(credentials)
+    return this.http
+    .put("https://api-rest-s.herokuapp.com/api/users/"+user, credentials);;
   }
 }

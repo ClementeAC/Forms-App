@@ -8,8 +8,6 @@ import { Menus } from "../main-menu/menus.model";
 export class MenusService {
   constructor(private http: HttpClient) {}
 
-  a = [];
-
   getMenus() {
     return this.http.get<any>(
       "https://api-rest-s.herokuapp.com/api/forms/menu"
