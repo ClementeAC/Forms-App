@@ -50,7 +50,6 @@ export class AuthenticationService {
       );
   }
 
-  //Aquí hay que configurar el API de nuestro Login
   login(credentials: { username; password }): Observable<any> {
     return this.http.post(
       `https://api-rest-s.herokuapp.com/api/users/login`,
