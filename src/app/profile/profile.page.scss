@@ -13,13 +13,20 @@ img {
   margin-bottom: none;
   border: 3px solid black;
 }
-
-ion-button {
+.edit-button {
   --ripple-color: transparent;
   position: absolute;
   color: rgba(255, 255, 255, 0.6);
   left: 1px;
   top: 10px;
+}
+
+.cancel-button {
+  --ripple-color: transparent;
+  position: absolute;
+  color: rgba(255, 255, 255, 0.6);
+  top: 6px;
+  left: 0.5px;
 }
 
 ion-input {

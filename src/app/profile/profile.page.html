@@ -6,8 +6,12 @@
       <ion-icon name="close-circle-outline"></ion-icon>
     </ion-button>
 
-    <ion-icon class="edit-avatar" *ngIf="isShowing === 1" name="images-outline"
-      (click)="openModal()"></ion-icon>
+    <ion-icon
+      class="edit-avatar"
+      *ngIf="isShowing === 1"
+      name="images-outline"
+      (click)="openModal()"
+    ></ion-icon>
 
     <p class="username">{{user.username}}</p>
   </div>

@@ -6,6 +6,8 @@ import { Menus } from "../main-menu/menus.model";
   providedIn: "root",
 })
 export class MenusService {
+  menus: Menus[] = [];
+
   constructor(private http: HttpClient) {}
 
   getMenus() {
@@ -16,7 +18,7 @@ export class MenusService {
 
   getMenu(menuId: string) {
     return this.http.get<any>(
-      "https://api-rest-s.herokuapp.com/api/forms/submenu/"+menuId
+      "https://api-rest-s.herokuapp.com/api/forms/submenu/" + menuId
     );
   }
 }
