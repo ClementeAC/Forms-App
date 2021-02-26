@@ -9,15 +9,9 @@ export class FormsService {
   forms: Forms[] = [];
   constructor(private http: HttpClient) {}
 
-  getForms() {
-    return this.http.get<any>(
-      "https://api-rest-s.herokuapp.com/api/forms/menu"
-    );
-  }
-
   getForm(formId: string) {
     return this.http.get<any>(
-      "https://api-rest-s.herokuapp.com/api/forms/submenu/" + formId
+      "https://api-rest-s.herokuapp.com/api/forms/question/" + formId
     );
   }
 }

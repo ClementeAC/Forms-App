@@ -29,6 +29,13 @@ const routes: Routes = [
             (m) => m.MenuDetailsPageModule
           ),
       },
+      {
+        path: "forms/:formId",
+        loadChildren: () =>
+          import("./main-menu/forms/forms.module").then(
+            (m) => m.FormsPageModule
+          ),
+      },
     ],
   },
   {

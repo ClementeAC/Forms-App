@@ -40,5 +40,7 @@ export class MainMenuPage implements OnInit {
     this.router.navigate(["./profile"]);
   }
 
-  addNewMenu() {}
+  addNewMenu() {
+    console.log("pressed");
+  }
 }

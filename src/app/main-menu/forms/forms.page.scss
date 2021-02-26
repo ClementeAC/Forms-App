@@ -1,0 +1,35 @@
+$white: rgba(255, 255, 255, 0.3);
+
+ion-content {
+  --ion-background-color: linear-gradient(45deg, #fc466b, #3f5efb);
+}
+
+ion-item {
+  --ion-background-color: transparent;
+}
+
+ion-input {
+  color: black;
+  --background: white;
+}
+
+ion-item-divider {
+  --ion-background-color: white;
+}
+
+p {
+  text-align: left;
+  margin-left: 3vw;
+}
+
+.questions {
+  text-align: center;
+}
+.title {
+  background: rgba(255, 255, 255, 0.3);
+  color: black;
+  backdrop-filter: blur(0.2rem);
+  z-index: 4;
+  border: 20px;
+  border-radius: 10px;
+}
