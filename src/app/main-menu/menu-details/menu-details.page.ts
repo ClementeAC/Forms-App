@@ -9,7 +9,7 @@ import { Menus } from "../menus.model";
   styleUrls: ["./menu-details.page.scss"],
 })
 export class MenuDetailsPage implements OnInit {
-  menus: string[];
+  menus: Menus;
 
   constructor(
     private activatedRoute: ActivatedRoute,

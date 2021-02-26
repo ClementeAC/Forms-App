@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { MenuController } from "@ionic/angular";
 import { Router } from "@angular/router";
 import { MenusService } from "../services/menus.service";
+import { FormsService } from "../services/forms.service";
 
 @Component({
   selector: "app-main-menu",
@@ -25,6 +26,7 @@ export class MainMenuPage implements OnInit {
   ngOnInit() {
     this.menusService.getMenus().subscribe((data) => {
       this.menus = data;
+      this.menusService.menus = data;
     });
   }
 
@@ -38,7 +40,5 @@ export class MainMenuPage implements OnInit {
     this.router.navigate(["./profile"]);
   }
 
-  addNewMenu(){
-    
-  }
+  addNewMenu() {}
 }
