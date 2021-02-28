@@ -14,4 +14,11 @@ export class FormsService {
       "https://api-rest-s.herokuapp.com/api/forms/question/" + formId
     );
   }
+
+  submitAnswer(formId: string, answers: string[]) {
+    return this.http.put(
+      "https://api-rest-s.herokuapp.com/api/forms/question/" + formId,
+      answers
+    );
+  }
 }

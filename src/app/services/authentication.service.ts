@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { map, tap, switchMap } from "rxjs/operators";
-import { BehaviorSubject, from, Observable, Subject } from "rxjs";
+import { BehaviorSubject, from, Observable } from "rxjs";
 
 import { Plugins } from "@capacitor/core";
 const { Storage } = Plugins;
@@ -72,14 +72,19 @@ export class AuthenticationService {
     return Storage.remove({ key: TOKEN_KEY });
   }
 
-  updateUserData(credentials: {
-    username,
-    avatar,
-    email,
-    password
-  }, user : string): Observable<any> {
-    console.log(credentials)
-    return this.http
-    .put("https://api-rest-s.herokuapp.com/api/users/"+user, credentials);;
+  updateUserData(
+    credentials: {
+      username;
+      avatar;
+      email;
+      password;
+    },
+    user: string
+  ): Observable<any> {
+    console.log(credentials);
+    return this.http.put(
+      "https://api-rest-s.herokuapp.com/api/users/" + user,
+      credentials
+    );
   }
 }
