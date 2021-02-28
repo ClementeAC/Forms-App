@@ -45,5 +45,26 @@ export class FormsPage implements OnInit {
     this.answer.question_id = question_id;
     this.answer.answers = answer;
     this.formsService.submitAnswer(this.recipeId, this.answer);
+
+    /*
+      const loading = await this.loadingController.create();
+      await loading.present();
+
+      this.formsService.submitAnswer(recipeId, ["si", "Si"]).subscribe(
+        async (res) => {
+          await loading.dismiss();
+        },
+        async (res) => {
+          await loading.dismiss();
+          const alert = await this.alertController.create({
+            header: "There was an error submitting your answer",
+            message: res.error.error,
+            buttons: ["OK"],
+          });
+          await alert.present();
+        }
+      );
+    });*/
+    
   }
 }

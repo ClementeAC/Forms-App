@@ -7,9 +7,9 @@
       *ngIf="isShowing === 2"
       >Edit</ion-button
     >
-    <img [src]="user.avatar" />
+    <img src="{{user.avatar}}" />
     <ion-button
-    class="cancel-button"
+      class="cancel-button"
       fill="clear"
       size="large"
       (click)="editInfo(2)"
@@ -28,7 +28,7 @@
     <p class="username">{{user.username}}</p>
   </div>
   <div class="forms-answered" *ngIf="isShowing === 2">
-    <p class="forms-answered-title">{{user.email}}</p>
+    <p class="forms-answered-title">Forms answered:</p>
     <p class="forms-answered-value">69</p>
   </div>
   <div class="data-edit" *ngIf="isShowing === 1">
@@ -70,9 +70,7 @@
           class="errors"
         >
           <span *ngIf="password.errors?.required">Password is required</span>
-          <span *ngIf="password.errors?.minlength"
-            >Password is too short</span
-          >
+          <span *ngIf="password.errors?.minlength">Password is too short</span>
         </div>
         <ion-input
           type="password"

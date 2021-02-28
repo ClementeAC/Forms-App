@@ -14,22 +14,21 @@ export class AvatarModalPage implements OnInit {
     private authService: AuthenticationService,
     private alertController: AlertController,
     private loadingController: LoadingController
-    ) {}
+  ) {}
 
   user: {
-    user_id: '',
-    username: '',
-    email: '',
-    password: '',
-    avatar: ''
+    user_id: "";
+    username: "";
+    email: "";
+    password: "";
+    avatar: "";
   };
 
   ngOnInit() {
-    this.user = JSON.parse(localStorage.getItem('user'));
+    this.user = JSON.parse(localStorage.getItem("user"));
   }
 
   setImage(imageId) {
-    
     this.user.avatar = imageId;
     localStorage.setItem("user", JSON.stringify(this.user));
     this.update();
