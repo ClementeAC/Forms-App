@@ -14,6 +14,7 @@ export class FormsPage implements OnInit {
   ) {}
 
   recipeId: string;
+  title: '';
   questions = [];
   answer= {
     user_id: '',
@@ -30,6 +31,7 @@ export class FormsPage implements OnInit {
       
       this.formsService.getForm(this.recipeId).subscribe((data) => {
         this.questions = data;
+        this.title = data[0].title_form;
         console.log(this.questions);
       });
     });
@@ -65,6 +67,6 @@ export class FormsPage implements OnInit {
         }
       );
     });*/
-    
+
   }
 }

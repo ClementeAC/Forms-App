@@ -11,7 +11,8 @@ import { Menus } from "../menus.model";
 })
 export class MenuDetailsPage implements OnInit {
   menus: Menus;
-  menu_id: string;
+  recipeId: string;
+  title = '';
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -21,11 +22,11 @@ export class MenuDetailsPage implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe((paramMap) => {
-      const recipeId = paramMap.get("menuId");
-      this.menu_id = paramMap.get("menuId");
-      this.menusService.getMenu(recipeId).subscribe((data) => {
+      this.recipeId = paramMap.get("menuId");
+      this.menusService.getMenu(this.recipeId).subscribe((data) => {
         this.menus = data;
         console.log(data);
+        this.title = data[0].title_menu;
       });
     });
   }

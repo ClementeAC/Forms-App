@@ -1,12 +1,15 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>title_menu}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{title}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 <div *ngFor="let menu of menus">
-  <div *ngIf="menu_id != menu.menu_id">
+  <div *ngIf="recipeId != menu.menu_id">
     <div [routerLink]="['/main-menu', menu.menu_id]">
       <ion-card class="menu-card" button="true">
         <ion-card-header>
@@ -19,7 +22,7 @@
       </ion-card>
     </div>
   </div>
-  <div *ngIf="menu_id == menu.menu_id"> 
+  <div *ngIf="recipeId == menu.menu_id && menu.form_id != null"> 
     <div [routerLink]="['../../forms', menu.form_id]">
       <ion-card class="form-card" button="true">
         <ion-card-header>

@@ -7,7 +7,7 @@
       *ngIf="isShowing === 2"
       >Edit</ion-button
     >
-    <img src="{{user.avatar}}" />
+    <img [src]="user.avatar" />
     <ion-button
       class="cancel-button"
       fill="clear"
