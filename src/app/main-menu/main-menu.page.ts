@@ -17,7 +17,7 @@ export class MainMenuPage implements OnInit {
     private router: Router,
     private menusService: MenusService
   ) {}
-
+  
   openFirst() {
     this.menu.enable(true, "first");
     this.menu.open("first");

@@ -1,20 +1,33 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{menus.title_menu}}</ion-title>
+    <ion-title>title_menu}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <!-- <div *ngFor="let form of forms" [routerLink]="['/form', form.id]">
-    <ion-card class="form-card" button="true">
-      <ion-card-header>
-        <ion-card-subtitle>Form</ion-card-subtitle>
-        <ion-card-title class="titles">{{form.title}}</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p>{{form.description}}</p>
-        <ion-icon name="chevron-forward-outline" class="card-icon"></ion-icon>
-      </ion-card-content>
-    </ion-card>
-  </div>-->
+<div *ngFor="let menu of menus">
+  <div *ngIf="recipeId != menu.menu_id">
+    <div [routerLink]="['/main-menu', menu.menu_id]">
+      <ion-card class="menu-card" button="true">
+        <ion-card-header>
+          <ion-card-subtitle> Menu </ion-card-subtitle>
+          <ion-card-title class="titles">{{menu.title_menu}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-icon name="chevron-forward-outline" class="card-icon"></ion-icon>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+  <div *ngIf="recipeId == menus.menu_id">
+    <div [routerLink]="['/form', menu.form_id]">
+      <ion-card class="form-card" button="true">
+        <ion-card-header>
+          <ion-card-subtitle>Form</ion-card-subtitle>
+          <ion-card-title class="titles">{{menu.title_form}}</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </div>
+  </div>
+</div>
 </ion-content>
