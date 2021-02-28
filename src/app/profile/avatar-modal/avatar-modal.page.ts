@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ModalController } from "@ionic/angular";
+import { Router } from "@angular/router";
 import { AuthenticationService } from "../../services/authentication.service";
 import { AlertController, LoadingController } from "@ionic/angular";
 
@@ -10,7 +10,7 @@ import { AlertController, LoadingController } from "@ionic/angular";
 })
 export class AvatarModalPage implements OnInit {
   constructor(
-    private modalController: ModalController, 
+    private router: Router,
     private authService: AuthenticationService,
     private alertController: AlertController,
     private loadingController: LoadingController
@@ -28,15 +28,12 @@ export class AvatarModalPage implements OnInit {
     this.user = JSON.parse(localStorage.getItem('user'));
   }
 
-  async closeModal() {
-    await this.modalController.dismiss();
-  }
-
   setImage(imageId) {
-    this.closeModal();
+    
     this.user.avatar = imageId;
     localStorage.setItem("user", JSON.stringify(this.user));
     this.update();
+    this.router.navigate(["./profile"]);
   }
 
   async update() {
@@ -57,5 +54,7 @@ export class AvatarModalPage implements OnInit {
         await alert.present();
       }
     );
+
+    
   }
 }

@@ -3,12 +3,11 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>{{questions[0].title_form}}</ion-title>
+    <ion-title>questions[0].title_form}}</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-  <form (ngSubmit)="register()" [formGroup]="credentials">
+  <form>
     <div *ngFor="let question of questions" class="questions">
       <ion-card class="title">
         <h1>{{question.title_q}}</h1>

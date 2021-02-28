@@ -15,10 +15,11 @@ export class FormsService {
     );
   }
 
-  submitAnswer(formId: string, answers: string[]) {
-    return this.http.put(
-      "https://api-rest-s.herokuapp.com/api/forms/question/" + formId,
+  submitAnswer(formId: string, answers: object) {
+    console.log(formId + "\n" + answers);
+    /*return this.http.post(
+      "https://api-rest-s.herokuapp.com/api/forms/answer/" + formId,
       answers
-    );
+    );*/
   }
 }

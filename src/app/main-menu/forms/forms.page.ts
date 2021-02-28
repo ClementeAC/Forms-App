@@ -1,8 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormsService } from "../../services/forms.service";
 import { ActivatedRoute, Router } from "@angular/router";
-import { AlertController, LoadingController } from "@ionic/angular";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-forms",
@@ -11,48 +9,41 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 })
 export class FormsPage implements OnInit {
   constructor(
-    private fb: FormBuilder,
     private formsService: FormsService,
-    private activatedRoute: ActivatedRoute,
-    private loadingController: LoadingController,
-    private alertController: AlertController
+    private activatedRoute: ActivatedRoute
   ) {}
 
+  recipeId: string;
   questions = [];
-  answers = [];
+  answer= {
+    user_id: '',
+    question_id: '2',
+    answers: []
+  }
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe((paramMap) => {
-      const recipeId = paramMap.get("formId");
-      this.formsService.getForm(recipeId).subscribe((data) => {
+      this.recipeId = paramMap.get("formId");
+
+      this.answer.user_id = (JSON.parse(localStorage.getItem('user'))).user_id;
+      console.log(this.answer)
+      
+      this.formsService.getForm(this.recipeId).subscribe((data) => {
         this.questions = data;
-        this.formsService.forms = data;
         console.log(this.questions);
       });
     });
   }
 
-  async submitAnswer() {
-    this.activatedRoute.paramMap.subscribe(async (paramMap) => {
-      const recipeId = paramMap.get("formId");
+  getAnswer (question_id, answer){
+   /* for(const i = 0; i < length; i++){
+      if(this.answer.question_id ){
 
-      const loading = await this.loadingController.create();
-      await loading.present();
-
-      this.formsService.submitAnswer(recipeId, ["si, Si"]).subscribe(
-        async (res) => {
-          await loading.dismiss();
-        },
-        async (res) => {
-          await loading.dismiss();
-          const alert = await this.alertController.create({
-            header: "There was an error submitting your answer",
-            message: res.error.error,
-            buttons: ["OK"],
-          });
-          await alert.present();
-        }
-      );
-    });
+      }
+      this.answer.question_id = question_id
+    }*/
+    this.answer.question_id = question_id;
+    this.answer.answers = answer;
+    this.formsService.submitAnswer(this.recipeId, this.answer);
   }
 }

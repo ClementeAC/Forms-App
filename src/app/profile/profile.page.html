@@ -22,7 +22,7 @@
       class="edit-avatar"
       *ngIf="isShowing === 1"
       name="images-outline"
-      (click)="openModal()"
+      [routerLink]="['./avatar-modal']"
     ></ion-icon>
 
     <p class="username">{{user.username}}</p>
