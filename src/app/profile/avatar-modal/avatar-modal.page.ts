@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { AuthenticationService } from "../../services/authentication.service";
 import { AlertController, LoadingController } from "@ionic/angular";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-avatar-modal",
@@ -10,22 +11,23 @@ import { AlertController, LoadingController } from "@ionic/angular";
 })
 export class AvatarModalPage implements OnInit {
   constructor(
-    private modalController: ModalController, 
+    private router: Router,
+    private modalController: ModalController,
     private authService: AuthenticationService,
     private alertController: AlertController,
     private loadingController: LoadingController
-    ) {}
+  ) {}
 
   user: {
-    user_id: '',
-    username: '',
-    email: '',
-    password: '',
-    avatar: ''
+    user_id: "";
+    username: "";
+    email: "";
+    password: "";
+    avatar: "";
   };
 
   ngOnInit() {
-    this.user = JSON.parse(localStorage.getItem('user'));
+    this.user = JSON.parse(localStorage.getItem("user"));
   }
 
   async closeModal() {
@@ -33,10 +35,11 @@ export class AvatarModalPage implements OnInit {
   }
 
   setImage(imageId) {
-    this.closeModal();
     this.user.avatar = imageId;
     localStorage.setItem("user", JSON.stringify(this.user));
     this.update();
+    this.closeModal();
+    this.router.navigate(["./main-menu"]);
   }
 
   async update() {

@@ -116,10 +116,10 @@ ion-fab-button {
   border-left: 1px solid $white;
   border-top: 1px solid $white;
   box-shadow: 10px 10px 60px -8px rgba(0, 0, 0, 0.2);
-  position: absolute;
-  top: 53vh;
-  right: 2.5vh;
-  height: 70vh;
+  position: relative;
+  top: 36.5vh;
+  left: 2.5vh;
+  height: 60vh;
   width: 90vw;
   text-align: center;
 }

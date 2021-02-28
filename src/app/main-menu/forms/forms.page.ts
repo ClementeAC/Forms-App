@@ -19,7 +19,7 @@ export class FormsPage implements OnInit {
   ) {}
 
   questions = [];
-  answers = [];
+  answers: string[];
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe((paramMap) => {
@@ -39,7 +39,7 @@ export class FormsPage implements OnInit {
       const loading = await this.loadingController.create();
       await loading.present();
 
-      this.formsService.submitAnswer(recipeId, ["si, Si"]).subscribe(
+      this.formsService.submitAnswer(recipeId, ["si", "Si"]).subscribe(
         async (res) => {
           await loading.dismiss();
         },

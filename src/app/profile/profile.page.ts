@@ -24,11 +24,11 @@ export class ProfilePage implements OnInit {
 
   isShowing = 2;
   user: {
-    user_id: '',
-    username: '',
-    email: '',
-    password: '',
-    avatar: ''
+    user_id: "";
+    username: "";
+    email: "";
+    password: "";
+    avatar: "";
   };
 
   ngOnInit() {
@@ -43,12 +43,16 @@ export class ProfilePage implements OnInit {
   }
 
   ionViewWillEnter() {
+    this.user = JSON.parse(localStorage.getItem("user"));
     this.isShowing = 2;
-    this.user = JSON.parse(localStorage.getItem('user'));
+  }
+
+  updatePicture() {
+    this.user = JSON.parse(localStorage.getItem("user"));
   }
 
   goBack() {
-    this.router.navigate(["./main-menu"]); 
+    this.router.navigate(["./main-menu"]);
   }
 
   editInfo(index) {
@@ -66,6 +70,7 @@ export class ProfilePage implements OnInit {
       async (res) => {
         await loading.dismiss();
         this.isShowing = 2;
+        this.updatePicture();
       },
       async (res) => {
         await loading.dismiss();
@@ -98,6 +103,7 @@ export class ProfilePage implements OnInit {
     const modal = await this.modalController.create({
       component: AvatarModalPage,
     });
+
     return await modal.present();
   }
 }
