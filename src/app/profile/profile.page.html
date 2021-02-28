@@ -3,10 +3,11 @@
     <ion-button
       class="edit-button"
       fill="clear"
+      size="large"
       (click)="editInfo(1)"
       *ngIf="isShowing === 2"
-      >Edit</ion-button
-    >
+      ><ion-icon name="options-outline"></ion-icon>
+      </ion-button>
     <img [src]="user.avatar" />
     <ion-button
       class="cancel-button"

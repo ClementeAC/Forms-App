@@ -17,7 +17,7 @@
       <div *ngIf="question.selection == true">
         <ion-card>
           <ion-radio-group>
-            <ion-item *ngFor="let quest of question.value.split('|')">
+            <ion-item *ngFor="let quest of question.value.split('|')" >
               <ion-label>{{quest}}</ion-label>
               <ion-radio slot="start"></ion-radio>
             </ion-item>
@@ -51,8 +51,17 @@
       </div>
       <br />
     </div>
-    <div class="submit-button">
-      <ion-button class="submit" (click)="submitAnswer()">Submit</ion-button>
-    </div>
+    <!--user-->
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-button color="light">
+        <ion-icon name="send-outline"></ion-icon>
+      </ion-button>
+    </ion-fab>  
+    <!--admin-->
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-button color="light">
+        <ion-icon name="add-outline"></ion-icon>
+      </ion-button>
+    </ion-fab>  
   </form>
 </ion-content>

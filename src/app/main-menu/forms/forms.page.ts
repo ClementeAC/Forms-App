@@ -16,18 +16,18 @@ export class FormsPage implements OnInit {
   recipeId: string;
   title: '';
   questions = [];
-  answer= {
+  answers: [];
+  answer = {
     user_id: '',
-    question_id: '2',
+    question_id: '',
     answers: []
-  }
+  };
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe((paramMap) => {
       this.recipeId = paramMap.get("formId");
 
       this.answer.user_id = (JSON.parse(localStorage.getItem('user'))).user_id;
-      console.log(this.answer)
       
       this.formsService.getForm(this.recipeId).subscribe((data) => {
         this.questions = data;
@@ -37,16 +37,18 @@ export class FormsPage implements OnInit {
     });
   }
 
-  getAnswer (question_id, answer){
-   /* for(const i = 0; i < length; i++){
+  getAnswer (question_id , answer){
+   
+    
+
+    /* for(const i = 0; i < length; i++){
       if(this.answer.question_id ){
 
       }
       this.answer.question_id = question_id
     }*/
-    this.answer.question_id = question_id;
-    this.answer.answers = answer;
-    this.formsService.submitAnswer(this.recipeId, this.answer);
+
+    console.log(question_id +"\n"+ answer);
 
     /*
       const loading = await this.loadingController.create();
@@ -68,5 +70,9 @@ export class FormsPage implements OnInit {
       );
     });*/
 
+  }
+
+  submitAnswer(){
+    this.formsService.submitAnswer(this.recipeId, this.answer);
   }
 }

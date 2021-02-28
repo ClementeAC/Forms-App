@@ -36,7 +36,6 @@ export class ProfilePage implements OnInit {
       password: ["", [Validators.required, Validators.minLength(6)]],
       confirmNewPassword: ["", [Validators.required, Validators.minLength(6)]],
     });
-    console.log(this.user);
   }
 
   ionViewWillEnter() {
