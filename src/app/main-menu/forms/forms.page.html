@@ -11,51 +11,48 @@
     <div *ngFor="let question of questions" class="questions">
       <ion-card class="title">
         <h1>{{question.title_q}}</h1>
-        <br />
+        <div class="divisor"></div>
+        <p>{{question.description_q}}</p>
       </ion-card>
-      <p>{{question.description_q}}</p>
       <div *ngIf="question.selection == true">
-        <ion-radio-group>
-          <ion-item>
-            <ion-label>Verdadero</ion-label>
-            <ion-radio slot="start"></ion-radio>
-          </ion-item>
-          <ion-item>
-            <ion-label>Falso</ion-label>
-            <ion-radio slot="start"></ion-radio>
-          </ion-item>
-        </ion-radio-group>
+        <ion-card>
+          <ion-radio-group>
+            <ion-item *ngFor="let quest of question.value.split('|')">
+              <ion-label>{{quest}}</ion-label>
+              <ion-radio slot="start"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-card>
       </div>
       <div *ngIf="question.text == true">
-        <ion-input
-          maxlength="{{question.response_size}}"
-          placeholder="Enter your answer here (Max. {{question.response_size}})"
-        ></ion-input>
+        <ion-card>
+          <ion-input
+            maxlength="{{question.response_size}}"
+            placeholder="Enter your answer here (Max. {{question.response_size}})"
+          ></ion-input>
+        </ion-card>
       </div>
       <div *ngIf="question.numeric == true">
-        <ion-input
-          inputmode="numeric"
-          type="number"
-          placeholder="Enter your answer here (numbers only)"
-        ></ion-input>
+        <ion-card>
+          <ion-input
+            inputmode="numeric"
+            type="number"
+            placeholder="Enter your answer here (numbers only)"
+          ></ion-input>
+        </ion-card>
       </div>
       <div *ngIf="question.checklist == true">
-        <ion-item>
-          <ion-label>Opción 1</ion-label>
-          <ion-checkbox slot="start"></ion-checkbox>
-        </ion-item>
-        <ion-item>
-          <ion-label>Opción 2</ion-label>
-          <ion-checkbox slot="start"></ion-checkbox>
-        </ion-item>
-        <ion-item>
-          <ion-label>Opción 3</ion-label>
-          <ion-checkbox slot="start"></ion-checkbox>
-        </ion-item>
+        <ion-card>
+          <ion-item *ngFor="let quest of question.value.split('|')">
+            <ion-label>{{quest}}</ion-label>
+            <ion-checkbox slot="start"></ion-checkbox>
+          </ion-item>
+        </ion-card>
       </div>
-      <div *ngIf="question.drop_down_list == true">Es drop down list</div>
       <br />
     </div>
-    <ion-button class="submit" (click)="submitAnswer()">Submit</ion-button>
+    <div class="submit-button">
+      <ion-button class="submit" (click)="submitAnswer()">Submit</ion-button>
+    </div>
   </form>
 </ion-content>
