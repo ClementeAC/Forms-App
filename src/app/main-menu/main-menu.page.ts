@@ -19,10 +19,8 @@ export class MainMenuPage implements OnInit {
     private alertController: AlertController,
     private loadingController: LoadingController
   ) {
-    this.admin = JSON.parse(localStorage.getItem("user")).admin;
   }
   menuData: FormGroup;
-  menuName: string;
   admin: string;
   menus = [];
 
@@ -32,14 +30,10 @@ export class MainMenuPage implements OnInit {
   }
 
   ngOnInit() {
-    this.menusService.getMenus().subscribe((data) => {
-      this.menus = data;
-      this.menusService.menus = data;
-    });
     this.menuData = this.fb.group({
-      title_menu: [this.menuName],
-      user_id: ["7"],
-      submenu: [null],
+      title_menu: '',
+      user_id: JSON.parse(localStorage.getItem("user")).user_id,
+      submenu: null,
     });
   }
 
@@ -60,6 +54,7 @@ export class MainMenuPage implements OnInit {
     this.menusService.addMenu(this.menuData.value).subscribe(
       async (res) => {
         await loading.dismiss();
+        this.menus.push(res[0]);
       },
       async (res) => {
         await loading.dismiss();
@@ -71,11 +66,6 @@ export class MainMenuPage implements OnInit {
         await alert.present();
       }
     );
-    this.menusService.addMenu({
-      title_menu: this.menuName,
-      user_id: "7",
-      submenu: null,
-    });
   }
 
   async addNewMenu() {
@@ -100,8 +90,8 @@ export class MainMenuPage implements OnInit {
           text: "Create",
           handler: (alertData) => {
             console.log("Confirm Ok");
-            this.menuName = alertData.newMenuName;
-            console.log(this.menuName);
+            this.menuData.value.title_menu = alertData.newMenuName;
+            console.log(this.menuData.value);
             this.addMenu();
           },
         },

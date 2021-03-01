@@ -1,12 +1,10 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Forms } from "../main-menu/forms/forms.model";
 
 @Injectable({
   providedIn: "root",
 })
 export class FormsService {
-  forms: Forms[] = [];
   constructor(private http: HttpClient) {}
 
   getForm(formId: string) {

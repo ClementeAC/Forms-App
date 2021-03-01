@@ -1,13 +1,11 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Menus } from "../main-menu/menus.model";
 import { BehaviorSubject, from, Observable } from "rxjs";
 
 @Injectable({
   providedIn: "root",
 })
 export class MenusService {
-  menus: Menus[] = [];
 
   constructor(private http: HttpClient) {}
 
@@ -23,11 +21,7 @@ export class MenusService {
     );
   }
 
-  addMenu(data: {
-    title_menu: string;
-    user_id: string;
-    submenu: null;
-  }): Observable<any> {
+  addMenu(data: string): Observable<any> {
     return this.http.post(
       "https://api-rest-s.herokuapp.com/api/forms/menu",
       data
