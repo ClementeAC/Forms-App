@@ -25,8 +25,8 @@ export class MainMenuPage implements OnInit {
   menus = [];
 
   openFirst() {
-    this.menu.enable(true, "first");
-    this.menu.open("first");
+   /* this.menu.enable(true, "first");
+    this.menu.open("first");*/
   }
 
   ngOnInit() {

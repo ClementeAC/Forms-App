@@ -56,7 +56,7 @@ export class FormsService {
       question
     );
   }
-////////////////////////////////////////////////////
+
   deleteForm(formId: string){
     return this.http.delete<any>(
       "https://api-rest-s.herokuapp.com/api/forms/form/" + formId
