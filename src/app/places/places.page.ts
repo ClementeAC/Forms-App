@@ -13,6 +13,7 @@ export class PlacesPage implements OnInit {
   constructor(private placeService: PlacesService, private router: Router) {}
 
   ngOnInit() {
+    localStorage.removeItem('user');
     this.places = this.placeService.getPlaces();
   }
 

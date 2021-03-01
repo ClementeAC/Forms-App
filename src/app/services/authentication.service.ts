@@ -66,11 +66,11 @@ export class AuthenticationService {
         })
       );*/
   }
-
+/*
   logout(): Promise<void> {
     this.isAuthenticated.next(false);
     return Storage.remove({ key: TOKEN_KEY });
-  }
+  }*/
 
   updateUserData(
     credentials: {

@@ -19,7 +19,8 @@ export class ProfilePage implements OnInit {
     private authService: AuthenticationService,
   ) {}
 
-  isShowing = 2;
+  admin: string;
+  isShowing = 2; 
   user: {
     user_id: "";
     username: "";
@@ -29,6 +30,7 @@ export class ProfilePage implements OnInit {
   };
 
   ngOnInit() {
+    this.admin = (JSON.parse(localStorage.getItem('user'))).admin;
     this.user = JSON.parse(localStorage.getItem("user"));
     this.credentials = this.fb.group({
       username: ["", [Validators.required, Validators.minLength(4)]],
@@ -93,6 +95,11 @@ export class ProfilePage implements OnInit {
 
   get confirmNewPassword() {
     return this.credentials.get("confirmNewPassword");
+  }
+
+  SignOff() {
+    localStorage.removeItem('user');
+    this.router.navigate(["./log-in"]);
   }
 
 }

@@ -10,13 +10,17 @@ import { FormsService } from "../services/forms.service";
   styleUrls: ["./main-menu.page.scss"],
 })
 export class MainMenuPage implements OnInit {
-  menus = [];
 
   constructor(
     private menu: MenuController,
     private router: Router,
     private menusService: MenusService
-  ) {}
+  ) {
+    this.admin = (JSON.parse(localStorage.getItem('user'))).admin;
+  }
+
+  admin: string;
+  menus = []; 
   
   openFirst() {
     this.menu.enable(true, "first");

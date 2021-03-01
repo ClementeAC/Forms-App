@@ -10,8 +10,9 @@ import { Menus } from "../menus.model";
   styleUrls: ["./menu-details.page.scss"],
 })
 export class MenuDetailsPage implements OnInit {
+  admin: string;
   menus: Menus;
-  recipeId: string;
+  recipeId: string; 
   title = '';
 
   constructor(
@@ -21,6 +22,7 @@ export class MenuDetailsPage implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.admin = (JSON.parse(localStorage.getItem('user'))).admin;
     this.activatedRoute.paramMap.subscribe((paramMap) => {
       this.recipeId = paramMap.get("menuId");
       this.menusService.getMenu(this.recipeId).subscribe((data) => {

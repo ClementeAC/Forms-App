@@ -13,6 +13,7 @@ export class FormsPage implements OnInit {
     private activatedRoute: ActivatedRoute
   ) {}
 
+  admin: string;
   recipeId: string;
   title: '';
   questions = [];
@@ -27,6 +28,7 @@ export class FormsPage implements OnInit {
     this.activatedRoute.paramMap.subscribe((paramMap) => {
       this.recipeId = paramMap.get("formId");
 
+      this.admin = (JSON.parse(localStorage.getItem('user'))).admin;
       this.answer.user_id = (JSON.parse(localStorage.getItem('user'))).user_id;
       
       this.formsService.getForm(this.recipeId).subscribe((data) => {
@@ -39,7 +41,7 @@ export class FormsPage implements OnInit {
 
   getAnswer (question_id , answer){
    
-    
+
 
     /* for(const i = 0; i < length; i++){
       if(this.answer.question_id ){

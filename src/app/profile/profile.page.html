@@ -1,14 +1,22 @@
 <ion-content>
   <div class="profile-data">
-    <ion-button
-      class="edit-button"
-      fill="clear"
-      size="large"
-      (click)="editInfo(1)"
-      *ngIf="isShowing === 2"
-      ><ion-icon name="options-outline"></ion-icon>
+
+    <ion-fab class="edit-button" *ngIf="isShowing === 2">
+      <ion-button fill="clear" color="light" size="large">
+        <ion-icon name="options-outline"></ion-icon>
       </ion-button>
+      <ion-fab-list side="bottom">
+        <ion-button color="light" (click)="editInfo(1)">
+          <ion-icon name="pencil-outline"></ion-icon>
+        </ion-button>
+        <ion-button color="light" (click)="SignOff()">
+          <ion-icon name="log-out-outline"></ion-icon>
+        </ion-button>
+      </ion-fab-list>
+    </ion-fab>
+
     <img [src]="user.avatar" />
+
     <ion-button
       class="cancel-button"
       fill="clear"
@@ -28,7 +36,7 @@
 
     <p class="username">{{user.username}}</p>
   </div>
-  <div class="forms-answered" *ngIf="isShowing === 2">
+  <div class="forms-answered" *ngIf="isShowing === 2 && admin != true">
     <p class="forms-answered-title">Forms answered:</p>
     <p class="forms-answered-value">69</p>
   </div>

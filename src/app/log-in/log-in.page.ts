@@ -39,11 +39,11 @@ export class LogInPage implements OnInit {
         localStorage.setItem("user", JSON.stringify(this.user));
 
         await loading.dismiss();
-        this.router.navigateByUrl("/prueba");
-        this.router.navigateByUrl("/profile", { replaceUrl: true });
+        this.router.navigateByUrl("/main-menu", { replaceUrl: true });
       },
       async (res) => {
         await loading.dismiss();
+        localStorage.removeItem('user');
         const alert = await this.alertController.create({
           header: "Login failed",
           message: res.error.error,
