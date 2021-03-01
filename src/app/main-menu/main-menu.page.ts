@@ -10,18 +10,17 @@ import { FormsService } from "../services/forms.service";
   styleUrls: ["./main-menu.page.scss"],
 })
 export class MainMenuPage implements OnInit {
-
   constructor(
     private menu: MenuController,
     private router: Router,
     private menusService: MenusService
   ) {
-    this.admin = (JSON.parse(localStorage.getItem('user'))).admin;
+    this.admin = JSON.parse(localStorage.getItem("user")).admin;
   }
 
   admin: string;
-  menus = []; 
-  
+  menus = [];
+
   openFirst() {
     this.menu.enable(true, "first");
     this.menu.open("first");
@@ -38,6 +37,7 @@ export class MainMenuPage implements OnInit {
     this.menusService.getMenus().subscribe((data) => {
       this.menus = data;
     });
+    this.admin = JSON.parse(localStorage.getItem("user")).admin;
   }
 
   goToProfile() {

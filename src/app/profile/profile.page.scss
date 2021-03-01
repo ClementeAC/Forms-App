@@ -69,6 +69,7 @@ ion-fab-button {
 .username {
   color: rgba(255, 255, 255, 0.6);
   font-size: x-large;
+  text-transform: capitalize;
 }
 .profile-data {
   background: $white;

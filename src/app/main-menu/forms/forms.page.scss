@@ -4,7 +4,7 @@ ion-content {
   --ion-background-color: linear-gradient(45deg, #fc466b, #3f5efb);
 }
 
-ion-item {
+ion-card {
   --ion-background-color: transparent;
 }
 
@@ -35,8 +35,8 @@ p {
 }
 
 .divisor {
-  height: 2px; 
-  margin-right: 5%; 
-  margin-left: 5%; 
+  height: 2px;
+  margin-right: 5%;
+  margin-left: 5%;
   background-color: #000000;
 }

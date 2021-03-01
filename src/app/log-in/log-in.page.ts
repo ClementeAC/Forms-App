@@ -34,21 +34,19 @@ export class LogInPage implements OnInit {
 
     this.authService.login(this.credentials.value).subscribe(
       async (res) => {
-
         this.user = res[0];
         localStorage.setItem("user", JSON.stringify(this.user));
-
         await loading.dismiss();
         this.router.navigateByUrl("/main-menu", { replaceUrl: true });
       },
       async (res) => {
         await loading.dismiss();
-        localStorage.removeItem('user');
         const alert = await this.alertController.create({
           header: "Login failed",
           message: res.error.error,
           buttons: ["OK"],
         });
+        localStorage.removeItem("user");
         await alert.present();
       }
     );

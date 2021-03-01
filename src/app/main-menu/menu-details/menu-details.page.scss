@@ -1,0 +1,39 @@
+$white: rgba(255, 255, 255, 0.3);
+
+ion-content {
+  --ion-background-color: linear-gradient(45deg, #fc466b, #3f5efb);
+}
+
+ion-card {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(0.2rem);
+  z-index: 4;
+  border-radius: 10px;
+}
+
+ion-toolbar {
+  --ion-color-primary: white;
+  --ion-color-primary-contrast: black;
+}
+
+ion-fab-button {
+  --ion-color-primary: transparent;
+  backdrop-filter: blur(25px);
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.2)
+  );
+  border-radius: 50%;
+}
+
+h3 {
+  color: black;
+  font-size: medium;
+}
+
+.card-icon {
+  color: black;
+  position: relative;
+  left: 350px;
+}
