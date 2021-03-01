@@ -13,7 +13,7 @@ export class PlacesPage implements OnInit {
   constructor(private placeService: PlacesService, private router: Router) {}
 
   ngOnInit() {
-    localStorage.removeItem('user');
+    localStorage.removeItem("user");
     this.places = this.placeService.getPlaces();
   }
 
@@ -21,14 +21,11 @@ export class PlacesPage implements OnInit {
     this.places = this.placeService.getPlaces();
   }
 
-  addNewPlace(){
-    this.router.navigate(['./new-place']);
+  addNewPlace() {
+    this.router.navigate(["./new-place"]);
   }
 
-  goToHome(){
-    this.router.navigate(['./home'])
+  goToHome() {
+    this.router.navigate(["./home"]);
   }
-
 }
-
-

@@ -34,7 +34,11 @@
     ></ion-icon>
 
     <p class="username">{{user.username}}</p>
-    <ion-icon name="shield-checkmark-outline" ngIf="admin == true"></ion-icon>
+    <ion-icon
+      class="verified"
+      name="shield-checkmark-outline"
+      *ngIf="admin == true"
+    ></ion-icon>
   </div>
   <div class="forms-answered" *ngIf="isShowing === 2 && admin != true">
     <p class="forms-answered-title">Forms answered:</p>

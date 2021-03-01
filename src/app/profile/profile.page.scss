@@ -71,6 +71,12 @@ ion-fab-button {
   font-size: x-large;
   text-transform: capitalize;
 }
+.verified {
+  color: rgb(36, 253, 36);
+  position: absolute;
+  top: 6px;
+  right: 10px;
+}
 .profile-data {
   background: $white;
   backdrop-filter: blur(3px);
@@ -123,15 +129,6 @@ ion-fab-button {
   height: 60vh;
   width: 90vw;
   text-align: center;
-}
-
-.close-icon {
-  position: absolute;
-  width: 25px;
-  height: 25px;
-  color: $white;
-  top: 5px;
-  left: 5px;
 }
 
 .edit-data {

@@ -8,33 +8,41 @@
 </ion-header>
 
 <ion-content>
-<div *ngFor="let menu of menus">
-  <div *ngIf="recipeId != menu.menu_id">
-    <div [routerLink]="['/main-menu', menu.menu_id]">
-      <ion-card class="menu-card" button="true">
-        <ion-card-header>
-          <ion-card-subtitle> Menu </ion-card-subtitle>
-          <ion-card-title class="titles">{{menu.title_menu}}</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <ion-icon name="chevron-forward-outline" class="card-icon"></ion-icon>
-        </ion-card-content>
-      </ion-card>
+  <div *ngFor="let menu of menus">
+    <div *ngIf="recipeId != menu.menu_id">
+      <div [routerLink]="['/main-menu', menu.menu_id]">
+        <ion-card class="menu-card" button="true">
+          <ion-card-header>
+            <ion-card-subtitle> Menu </ion-card-subtitle>
+            <ion-card-title class="titles">{{menu.title_menu}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-icon name="folder-open-outline" class="card-icon"></ion-icon>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </div>
+    <div *ngIf="recipeId == menu.menu_id && menu.form_id != null">
+      <div [routerLink]="['../../forms', menu.form_id]">
+        <ion-card class="form-card" button="true">
+          <ion-card-header>
+            <ion-card-subtitle>Form</ion-card-subtitle>
+            <ion-card-title class="titles">{{menu.title_form}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-icon name="document-text-outline" class="card-icon"></ion-icon>
+          </ion-card-content>
+        </ion-card>
+      </div>
     </div>
   </div>
-  <div *ngIf="recipeId == menu.menu_id && menu.form_id != null"> 
-    <div [routerLink]="['../../forms', menu.form_id]">
-      <ion-card class="form-card" button="true">
-        <ion-card-header>
-          <ion-card-subtitle>Form</ion-card-subtitle>
-          <ion-card-title class="titles">{{menu.title_form}}</ion-card-title>
-        </ion-card-header>
-      </ion-card>
-    </div>
-  </div>
-</div>
-<ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="admin == true">
-    <ion-fab-button color="light">
+  <ion-fab
+    vertical="bottom"
+    horizontal="end"
+    slot="fixed"
+    *ngIf="admin == true"
+  >
+    <ion-fab-button color="primary">
       <ion-icon name="add-outline"></ion-icon>
     </ion-fab-button>
     <ion-fab-list side="top">

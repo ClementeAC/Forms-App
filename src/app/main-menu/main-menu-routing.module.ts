@@ -7,15 +7,19 @@ const routes: Routes = [
   {
     path: "",
     component: MainMenuPage,
-  },  {
-    path: 'menu-details',
-    loadChildren: () => import('./menu-details/menu-details.module').then( m => m.MenuDetailsPageModule)
   },
   {
-    path: 'forms',
-    loadChildren: () => import('./forms/forms.module').then( m => m.FormsPageModule)
+    path: "menu-details",
+    loadChildren: () =>
+      import("./menu-details/menu-details.module").then(
+        (m) => m.MenuDetailsPageModule
+      ),
   },
-
+  {
+    path: "forms",
+    loadChildren: () =>
+      import("./forms/forms.module").then((m) => m.FormsPageModule),
+  },
 ];
 
 @NgModule({

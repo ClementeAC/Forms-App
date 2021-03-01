@@ -85,13 +85,13 @@ const routes: Routes = [
       {
         path: "",
         loadChildren: () =>
-      import("./profile/profile.module").then((m) => m.ProfilePageModule),
+          import("./profile/profile.module").then((m) => m.ProfilePageModule),
       },
       {
         path: "avatar-modal",
         loadChildren: () =>
           import("./profile/avatar-modal/avatar-modal.module").then(
-            (m) => m.AvatarModalPageModule 
+            (m) => m.AvatarModalPageModule
           ),
       },
     ],
