@@ -23,7 +23,6 @@ export class AuthenticationService {
   }
 
   user: string;
-  iddeusuario: string;
 
   async loadToken() {
     const token = await Storage.get({ key: TOKEN_KEY });

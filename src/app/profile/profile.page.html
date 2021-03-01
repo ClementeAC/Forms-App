@@ -1,6 +1,5 @@
 <ion-content>
   <div class="profile-data">
-
     <ion-fab class="edit-button" *ngIf="isShowing === 2">
       <ion-button fill="clear" color="light" size="large">
         <ion-icon name="options-outline"></ion-icon>
@@ -35,6 +34,7 @@
     ></ion-icon>
 
     <p class="username">{{user.username}}</p>
+    <ion-icon name="shield-checkmark-outline" ngIf="admin == true"></ion-icon>
   </div>
   <div class="forms-answered" *ngIf="isShowing === 2 && admin != true">
     <p class="forms-answered-title">Forms answered:</p>
@@ -42,7 +42,7 @@
   </div>
   <div class="data-edit" *ngIf="isShowing === 1">
     <p class="edit-data">Edit user data</p>
-    <form (ngSubmit)="update()" [formGroup]="credentials">
+    <form (ngSubmit)="update()" [formGroup]="credentials" name="updateform">
       <div class="input-group">
         <ion-input
           type="text"

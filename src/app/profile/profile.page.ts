@@ -16,11 +16,10 @@ export class ProfilePage implements OnInit {
     private fb: FormBuilder,
     private loadingController: LoadingController,
     private alertController: AlertController,
-    private authService: AuthenticationService,
+    private authService: AuthenticationService
   ) {}
-
   admin: string;
-  isShowing = 2; 
+  isShowing = 2;
   user: {
     user_id: "";
     username: "";
@@ -30,7 +29,7 @@ export class ProfilePage implements OnInit {
   };
 
   ngOnInit() {
-    this.admin = (JSON.parse(localStorage.getItem('user'))).admin;
+    this.admin = JSON.parse(localStorage.getItem("user")).admin;
     this.user = JSON.parse(localStorage.getItem("user"));
     this.credentials = this.fb.group({
       username: ["", [Validators.required, Validators.minLength(4)]],
@@ -43,6 +42,7 @@ export class ProfilePage implements OnInit {
   ionViewWillEnter() {
     this.user = JSON.parse(localStorage.getItem("user"));
     this.isShowing = 2;
+    this.admin = JSON.parse(localStorage.getItem("user")).admin;
   }
 
   updatePicture() {
@@ -57,6 +57,10 @@ export class ProfilePage implements OnInit {
     this.isShowing = index;
   }
 
+  clearFields() {
+    document.forms["updateform"].reset();
+  }
+
   async update() {
     const loading = await this.loadingController.create();
     await loading.present();
@@ -69,6 +73,7 @@ export class ProfilePage implements OnInit {
         await loading.dismiss();
         this.isShowing = 2;
         this.updatePicture();
+        this.clearFields();
       },
       async (res) => {
         await loading.dismiss();
@@ -98,8 +103,7 @@ export class ProfilePage implements OnInit {
   }
 
   SignOff() {
-    localStorage.removeItem('user');
+    localStorage.removeItem("user");
     this.router.navigate(["./log-in"]);
   }
-
 }
