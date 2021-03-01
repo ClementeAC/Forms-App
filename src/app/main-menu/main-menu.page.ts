@@ -100,4 +100,50 @@ export class MainMenuPage implements OnInit {
 
     await alert.present();
   }
+
+  async confirmDeleteMenu(menu_id){
+    const alert = await this.alertController.create({
+      header: "Delete Menu",
+      message: "sure to delete this menu? ",
+      buttons: [
+        {
+          text: "Cancel",
+          role: "cancel",
+          handler: () => {
+            console.log("Confirm Cancel");
+          },
+        },
+        {
+          text: "Delete",
+          handler: (alertData) => {
+            console.log("Confirm Ok");
+            this.deleteMenu(menu_id);
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+  }
+
+  async deleteMenu(menu_id){
+    const loading = await this.loadingController.create();
+    await loading.present();
+    this.menusService.deleteMenu(menu_id).subscribe(
+      async (res) => {
+        this.router.navigate(["./main-menu"]);
+        await loading.dismiss();
+      },
+      async (res) => {
+        await loading.dismiss();
+        const alert = await this.alertController.create({
+          header: "Menu failed to delete",
+          message: res.error.error,
+          buttons: ["OK"],
+        });
+        await alert.present();
+      }
+    );
+  }
+
 }

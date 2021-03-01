@@ -27,4 +27,11 @@ export class MenusService {
       data
     );
   }
+
+  deleteMenu(menuId: string){
+    return this.http.delete<any>(
+      "https://api-rest-s.herokuapp.com/api/forms/menu/" + menuId
+    );
+  }
+
 }

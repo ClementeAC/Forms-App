@@ -2,7 +2,6 @@ import { ThrowStmt } from "@angular/compiler";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { MenusService } from "../../services/menus.service";
-import { Menus } from "../menus.model";
 
 @Component({
   selector: "app-menu-details",
@@ -11,7 +10,7 @@ import { Menus } from "../menus.model";
 })
 export class MenuDetailsPage implements OnInit {
   admin: string;
-  menus: Menus;
+  menus: [];
   recipeId: string; 
   title = '';
 
