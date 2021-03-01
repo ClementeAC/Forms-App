@@ -33,5 +33,12 @@ export class MenusService {
       "https://api-rest-s.herokuapp.com/api/forms/menu/" + menuId
     );
   }
+////////////////////////////////////////////////////
+  updateMenu(menuId: string, data: string){
+    return this.http.put(
+      "https://api-rest-s.herokuapp.com/api/forms/menu/" + menuId,
+      data
+    );
+  }
 
 }
