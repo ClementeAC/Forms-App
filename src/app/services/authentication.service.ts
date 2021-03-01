@@ -55,23 +55,7 @@ export class AuthenticationService {
       `https://api-rest-s.herokuapp.com/api/users/login`,
       credentials
     );
-    /*.pipe(
-        map((data: any) => data.token),
-        switchMap((token) => {
-          return from(Storage.set({ key: TOKEN_KEY, value: token })); 
-
-        }),
-        tap((_) => {
-          this.isAuthenticated.next(true);
-        })
-      );*/
   }
-/*
-  logout(): Promise<void> {
-    this.isAuthenticated.next(false);
-    return Storage.remove({ key: TOKEN_KEY });
-  }*/
-
   updateUserData(
     credentials: {
       username;
