@@ -3,7 +3,8 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Stats of {{title}}</ion-title>
+    <ion-title *ngIf="title == '|'">Not Exist Stats</ion-title>
+    <ion-title *ngIf="title != '|'">Stats of {{title}}</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
@@ -12,7 +13,7 @@
       <h1>{{answer.title_q}}</h1>
     </ion-card>
       <ion-card *ngIf="answer.question != null">
-        <ion-item *ngFor="let quest of answer.question.split('|');">
+        <ion-item *ngFor="let quest of answer.question.split('|')">
           <div *ngIf="answer.value == quest">
             <ion-label>{{quest}}: {{statistics + 1}} ✔</ion-label>
           </div>

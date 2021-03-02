@@ -48,7 +48,7 @@ export class FormsService {
       "https://api-rest-s.herokuapp.com/api/forms/form/" + formId
     );
   }
-  ////////////////////////////////////////////////////
+  
   deleteQuestion(questionId: string) {
     return this.http.delete<any>(
       "https://api-rest-s.herokuapp.com/api/forms/question/" + questionId
