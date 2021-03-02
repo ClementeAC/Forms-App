@@ -18,6 +18,7 @@ export class FormsService {
       "https://api-rest-s.herokuapp.com/api/forms/answer/" + questionId
     );
   }
+
 ////////////////////////////////////////////////////
   submitAnswer(formId: string, answers: object) {
     console.log(formId + "\n" + answers);

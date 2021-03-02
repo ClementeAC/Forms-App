@@ -20,6 +20,8 @@ export class ProfilePage implements OnInit {
   ) {}
   admin: string;
   isShowing = 2;
+  statistics = [];
+  formsAnswered: number;
   user: {
     user_id: "";
     username: "";
@@ -37,6 +39,9 @@ export class ProfilePage implements OnInit {
       password: ["", [Validators.required, Validators.minLength(6)]],
       confirmNewPassword: ["", [Validators.required, Validators.minLength(6)]],
     });
+    if(!this.admin){
+      this.getAnswersUser();
+    }
   }
 
   ionViewWillEnter() {
@@ -86,6 +91,39 @@ export class ProfilePage implements OnInit {
       }
     );
     localStorage.setItem("user", JSON.stringify(this.user));
+  }
+
+  async getAnswersUser(){
+    const loading = await this.loadingController.create();
+    await loading.present();
+    
+    this.authService.getAnswersUser(this.user.user_id).subscribe(
+      async (res) => {
+        await loading.dismiss();
+
+        var forms = res.map(function (form) { return form.title_form; });
+        var sorted = forms.sort();
+
+        this.statistics = sorted.filter(function (value, index) {
+          return value !== sorted[index + 1];
+        });
+        this.formsAnswered = this.statistics.length;
+
+        console.log(this.statistics);
+
+        this.updatePicture();
+        this.clearFields();
+      },
+      async (res) => {
+        await loading.dismiss();
+        const alert = await this.alertController.create({
+          header: "Failed to get statistics",
+          message: res.error.error,
+          buttons: ["OK"],
+        });
+        await alert.present();
+      }
+    );
   }
 
   get username() {
