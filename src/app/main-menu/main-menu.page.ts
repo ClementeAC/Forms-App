@@ -103,7 +103,7 @@ export class MainMenuPage implements OnInit {
   async confirmDeleteMenu(menu_id) {
     const alert = await this.alertController.create({
       header: "Delete Menu",
-      message: "sure to delete this menu? ",
+      message: "Are you sure you want to delete this menu?",
       buttons: [
         {
           text: "Cancel",

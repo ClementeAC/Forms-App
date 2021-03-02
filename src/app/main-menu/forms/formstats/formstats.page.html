@@ -27,6 +27,7 @@
           maxlength="{{question.response_size}}"
           placeholder="Enter your answer here (Max. {{question.response_size}})"
         ></ion-input>
+        <h2>Answers:</h2>
         <p *ngFor="let answer of answers" class="answers">{{answer.value}}</p>
       </ion-card>
     </div>

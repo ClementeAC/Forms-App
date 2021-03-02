@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormsService } from "../../services/forms.service";
 import { ActivatedRoute, Router } from "@angular/router";
+import { AlertController, LoadingController } from "@ionic/angular";
 
 @Component({
   selector: "app-forms",
@@ -11,7 +12,9 @@ export class FormsPage implements OnInit {
   constructor(
     private formsService: FormsService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private alertController: AlertController,
+    private loadingController: LoadingController
   ) {}
 
   admin: string;
@@ -78,5 +81,50 @@ export class FormsPage implements OnInit {
   goToFormstats() {
     this.router.navigate(["./main-menu/forms/formstats", this.recipeId]);
     console.log("pressed");
+  }
+
+  async confirmDeleteQuestion(question_id) {
+    const alert = await this.alertController.create({
+      header: "Delete Question",
+      message: "Are you sure you want to delete this question? ",
+      buttons: [
+        {
+          text: "Cancel",
+          role: "cancel",
+          handler: () => {
+            console.log("Confirm Cancel");
+          },
+        },
+        {
+          text: "Delete",
+          handler: (alertData) => {
+            console.log("Confirm Ok");
+            this.deleteQuestion(question_id);
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+  }
+
+  async deleteQuestion(question_id) {
+    const loading = await this.loadingController.create();
+    await loading.present();
+    this.formsService.deleteQuestion(question_id).subscribe(
+      async (res) => {
+        this.router.navigate(["./main-menu"]);
+        await loading.dismiss();
+      },
+      async (res) => {
+        await loading.dismiss();
+        const alert = await this.alertController.create({
+          header: "Question failed to delete",
+          message: res.error.error,
+          buttons: ["OK"],
+        });
+        await alert.present();
+      }
+    );
   }
 }
