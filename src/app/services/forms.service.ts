@@ -13,9 +13,9 @@ export class FormsService {
     );
   }
 ////////////////////////////////////////////////////
-  getAnswers(questionId: string) {
+  getAnswers(formId: string) {
     return this.http.get<any>(
-      "https://api-rest-s.herokuapp.com/api/forms/answer/" + questionId
+      "https://api-rest-s.herokuapp.com/api/forms/answer/" + formId
     );
   }
 
@@ -29,9 +29,9 @@ export class FormsService {
   }
 ////////////////////////////////////////////////////
   createQuestion(form: string){
-    //{ title_q, description_q, value, response_size, required, selection, text, numeric, checklist }
+    //{ form_id, title_q, description_q, value, response_size, required, selection, text, numeric, checklist }
     return this.http.post(
-      "https://api-rest-s.herokuapp.com/api/forms/form/",
+      "https://api-rest-s.herokuapp.com/api/forms/question/",
       form
     );
   }
@@ -40,20 +40,6 @@ export class FormsService {
     return this.http.post(
       "https://api-rest-s.herokuapp.com/api/forms/form/",
       form
-    );
-  }
-////////////////////////////////////////////////////
-  updateForm(formId: string, form: string){
-    return this.http.put(
-      "https://api-rest-s.herokuapp.com/api/forms/form/" + formId,
-      form
-    );
-  }
-////////////////////////////////////////////////////
-  updateQuestion(questionId: string, question: string){
-    return this.http.put(
-      "https://api-rest-s.herokuapp.com/api/forms/question/" + questionId,
-      question
     );
   }
 

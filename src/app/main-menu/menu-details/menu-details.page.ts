@@ -15,6 +15,7 @@ export class MenuDetailsPage implements OnInit {
   admin: string;
   menuData: FormGroup;
   formData: FormGroup;
+  questionDefault: FormGroup;
   menus= [];
   recipeId: string; 
   title = '';
@@ -50,6 +51,18 @@ export class MenuDetailsPage implements OnInit {
       description_form: null, 
       locked: false
     });
+    this.questionDefault = this.fb.group({ 
+      form_id: '', 
+      title_q:'Pregunta', 
+      description_q: 'Descripcion', 
+      value: 'opcion 1|opcion 2', 
+      response_size: null, 
+      required: false, 
+      selection: true, 
+      text: false, 
+      numeric: false, 
+      checklist: false
+    });
   }
 
 
@@ -77,7 +90,7 @@ export class MenuDetailsPage implements OnInit {
           handler: (alertData) => {
             console.log("Confirm Ok");
             this.formData.value.title_form = alertData.newFormName;
-            this.addFrom();
+            this.addForm();
           },
         },
       ],
@@ -87,13 +100,19 @@ export class MenuDetailsPage implements OnInit {
   }
  ////////////////////////////////////////////////////////////////////////
 
-  async addFrom(){
+  async addForm(){
     const loading = await this.loadingController.create();
     await loading.present();
-    console.log(this.formData.value);
     this.formService.createForm(this.formData.value).subscribe(
       async (res) => {
         await loading.dismiss();
+        this.menus.push(res[0]);
+        this.questionDefault.value.form_id = res[0].form_id;
+        this.formService.createQuestion(this.questionDefault.value).subscribe(
+          async (res) => {
+            await loading.dismiss();
+          }
+        );
         this.router.navigate(["./main-menu/"+this.recipeId]);
       },
       async (res) => {
@@ -107,6 +126,7 @@ export class MenuDetailsPage implements OnInit {
       }
     );
   }
+
 
 
   ////////////////////////////////////////////////////////////////////////
