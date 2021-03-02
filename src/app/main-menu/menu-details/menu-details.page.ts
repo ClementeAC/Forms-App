@@ -31,6 +31,7 @@ export class MenuDetailsPage implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.presentLoading();
     this.admin = JSON.parse(localStorage.getItem("user")).admin;
     this.activatedRoute.paramMap.subscribe((paramMap) => {
       this.recipeId = paramMap.get("menuId");
@@ -63,6 +64,50 @@ export class MenuDetailsPage implements OnInit {
       numeric: false,
       checklist: false,
     });
+  }
+
+  ionViewWillEnter() {
+    this.presentLoading();
+    this.admin = JSON.parse(localStorage.getItem("user")).admin;
+    this.activatedRoute.paramMap.subscribe((paramMap) => {
+      this.recipeId = paramMap.get("menuId");
+      this.menusService.getMenu(this.recipeId).subscribe((data) => {
+        this.menus = data;
+        console.log(data);
+        this.title = data[0].title_menu;
+      });
+    });
+    this.menuData = this.fb.group({
+      title_menu: "",
+      user_id: JSON.parse(localStorage.getItem("user")).user_id,
+      submenu: this.recipeId,
+    });
+    this.formData = this.fb.group({
+      menu_id: this.recipeId,
+      title_form: "",
+      description_form: null,
+      locked: false,
+    });
+    this.questionDefault = this.fb.group({
+      form_id: "",
+      title_q: "Pregunta",
+      description_q: "Descripcion",
+      value: "opcion 1|opcion 2",
+      response_size: null,
+      required: false,
+      selection: true,
+      text: false,
+      numeric: false,
+      checklist: false,
+    });
+  }
+
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: "Please wait...",
+      duration: 300,
+    });
+    await loading.present();
   }
 
   ////////////////////////////////////////////////////////////////////////

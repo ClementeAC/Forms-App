@@ -29,6 +29,23 @@ export class FormsPage implements OnInit {
   };
 
   ngOnInit() {
+    this.presentLoading();
+    this.activatedRoute.paramMap.subscribe((paramMap) => {
+      this.recipeId = paramMap.get("formId");
+
+      this.admin = JSON.parse(localStorage.getItem("user")).admin;
+      this.answer.user_id = JSON.parse(localStorage.getItem("user")).user_id;
+
+      this.formsService.getForm(this.recipeId).subscribe((data) => {
+        this.questions = data;
+        this.title = data[0].title_form;
+        console.log(this.questions);
+      });
+    });
+  }
+
+  ionViewWillEnter() {
+    this.presentLoading();
     this.activatedRoute.paramMap.subscribe((paramMap) => {
       this.recipeId = paramMap.get("formId");
 
@@ -72,6 +89,14 @@ export class FormsPage implements OnInit {
         }
       );
     });*/
+  }
+
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: "Please wait...",
+      duration: 300,
+    });
+    await loading.present();
   }
 
   submitAnswer() {
