@@ -19,7 +19,7 @@ export class FormsService {
     );
   }
 
-////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////
   submitAnswer(formId: string, answers: object) {
     console.log(formId + "\n" + answers);
     /*return this.http.post(
@@ -36,20 +36,20 @@ export class FormsService {
     );
   }
 
-  createForm(form: string){
+  createForm(form: string) {
     return this.http.post(
       "https://api-rest-s.herokuapp.com/api/forms/form/",
       form
     );
   }
 
-  deleteForm(formId: string){
+  deleteForm(formId: string) {
     return this.http.delete<any>(
       "https://api-rest-s.herokuapp.com/api/forms/form/" + formId
     );
   }
-////////////////////////////////////////////////////
-  deleteQuestion(questionId: string){
+  ////////////////////////////////////////////////////
+  deleteQuestion(questionId: string) {
     return this.http.delete<any>(
       "https://api-rest-s.herokuapp.com/api/forms/question/" + questionId
     );

@@ -17,7 +17,7 @@
       <div *ngIf="question.selection == true">
         <ion-card>
           <ion-radio-group>
-            <ion-item *ngFor="let quest of question.value.split('|')" >
+            <ion-item *ngFor="let quest of question.value.split('|')">
               <ion-label>{{quest}}</ion-label>
               <ion-radio slot="start"></ion-radio>
             </ion-item>
@@ -54,10 +54,25 @@
   </form>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-button color="light" *ngIf="admin != true">
-      <ion-icon name="send-outline"></ion-icon>
+      <ion-icon name="send"></ion-icon>
     </ion-button>
-    <ion-button color="light" *ngIf="admin == true">
-      <ion-icon name="add-outline"></ion-icon>
-    </ion-button>
+  </ion-fab>
+  <ion-fab
+    vertical="bottom"
+    horizontal="end"
+    slot="fixed"
+    *ngIf="admin == true"
+  >
+    <ion-fab-button color="primary">
+      <ion-icon name="menu-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button color="light">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="light" (click)="goToFormstats()">
+        <ion-icon name="stats-chart"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
   </ion-fab>
 </ion-content>

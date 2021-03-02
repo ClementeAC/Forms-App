@@ -7,7 +7,11 @@ const routes: Routes = [
   {
     path: '',
     component: FormsPage
+  },  {
+    path: 'formstats',
+    loadChildren: () => import('./formstats/formstats.module').then( m => m.FormstatsPageModule)
   }
+
 ];
 
 @NgModule({

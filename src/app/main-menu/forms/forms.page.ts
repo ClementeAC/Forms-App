@@ -10,27 +10,28 @@ import { ActivatedRoute, Router } from "@angular/router";
 export class FormsPage implements OnInit {
   constructor(
     private formsService: FormsService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {}
 
   admin: string;
   recipeId: string;
-  title: '';
+  title: "";
   questions = [];
   answers: [];
   answer = {
-    user_id: '',
-    question_id: '',
-    answers: []
+    user_id: "",
+    question_id: "",
+    answers: [],
   };
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe((paramMap) => {
       this.recipeId = paramMap.get("formId");
 
-      this.admin = (JSON.parse(localStorage.getItem('user'))).admin;
-      this.answer.user_id = (JSON.parse(localStorage.getItem('user'))).user_id;
-      
+      this.admin = JSON.parse(localStorage.getItem("user")).admin;
+      this.answer.user_id = JSON.parse(localStorage.getItem("user")).user_id;
+
       this.formsService.getForm(this.recipeId).subscribe((data) => {
         this.questions = data;
         this.title = data[0].title_form;
@@ -39,10 +40,7 @@ export class FormsPage implements OnInit {
     });
   }
 
-  getAnswer (question_id , answer){
-   
-
-
+  getAnswer(question_id, answer) {
     /* for(const i = 0; i < length; i++){
       if(this.answer.question_id ){
 
@@ -50,7 +48,7 @@ export class FormsPage implements OnInit {
       this.answer.question_id = question_id
     }*/
 
-    console.log(question_id +"\n"+ answer);
+    console.log(question_id + "\n" + answer);
 
     /*
       const loading = await this.loadingController.create();
@@ -71,10 +69,14 @@ export class FormsPage implements OnInit {
         }
       );
     });*/
-
   }
 
-  submitAnswer(){
+  submitAnswer() {
     this.formsService.submitAnswer(this.recipeId, this.answer);
+  }
+
+  goToFormstats() {
+    this.router.navigate(["./main-menu/forms/formstats", this.recipeId]);
+    console.log("pressed");
   }
 }

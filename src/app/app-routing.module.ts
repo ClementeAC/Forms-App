@@ -36,6 +36,13 @@ const routes: Routes = [
             (m) => m.FormsPageModule
           ),
       },
+      {
+        path: "forms/formstats/:formId",
+        loadChildren: () =>
+          import("./main-menu/forms/formstats/formstats.module").then(
+            (m) => m.FormstatsPageModule
+          ),
+      },
     ],
   },
   {
