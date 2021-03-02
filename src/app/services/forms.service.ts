@@ -34,9 +34,8 @@ export class FormsService {
       form
     );
   }
-////////////////////////////////////////////////////
+
   createForm(form: string){
-    //{ menu_id, title_form, description_form, locked }
     return this.http.post(
       "https://api-rest-s.herokuapp.com/api/forms/form/",
       form

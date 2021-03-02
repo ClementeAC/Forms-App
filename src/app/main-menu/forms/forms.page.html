@@ -51,17 +51,13 @@
       </div>
       <br />
     </div>
-    <!--user-->
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="admin != true">
-      <ion-button color="light">
-        <ion-icon name="send-outline"></ion-icon>
-      </ion-button>
-    </ion-fab>  
-    <!--admin-->
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="admin == true">
-      <ion-button color="light">
-        <ion-icon name="add-outline"></ion-icon>
-      </ion-button>
-    </ion-fab>  
   </form>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-button color="light" *ngIf="admin != true">
+      <ion-icon name="send-outline"></ion-icon>
+    </ion-button>
+    <ion-button color="light" *ngIf="admin == true">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-button>
+  </ion-fab>
 </ion-content>

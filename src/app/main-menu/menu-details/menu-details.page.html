@@ -9,7 +9,7 @@
 
 <ion-content>
   <div *ngFor="let menu of menus">
-    <div *ngIf="recipeId != menu.menu_id">
+    <div *ngIf="recipeId != menu.menu_id && recipeId == menu.submenu">
       <div [routerLink]="['/main-menu', menu.menu_id]">
         <ion-card class="menu-card" button="true">
           <ion-card-header>
