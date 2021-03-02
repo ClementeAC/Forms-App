@@ -18,20 +18,19 @@ export class MainMenuPage implements OnInit {
     private menusService: MenusService,
     private alertController: AlertController,
     private loadingController: LoadingController
-  ) {
-  }
+  ) {}
   menuData: FormGroup;
   admin: string;
   menus = [];
 
   openFirst() {
-   /* this.menu.enable(true, "first");
+    /* this.menu.enable(true, "first");
     this.menu.open("first");*/
   }
 
   ngOnInit() {
     this.menuData = this.fb.group({
-      title_menu: '',
+      title_menu: "",
       user_id: JSON.parse(localStorage.getItem("user")).user_id,
       submenu: null,
     });
@@ -101,7 +100,7 @@ export class MainMenuPage implements OnInit {
     await alert.present();
   }
 
-  async confirmDeleteMenu(menu_id){
+  async confirmDeleteMenu(menu_id) {
     const alert = await this.alertController.create({
       header: "Delete Menu",
       message: "sure to delete this menu? ",
@@ -126,7 +125,7 @@ export class MainMenuPage implements OnInit {
     await alert.present();
   }
 
-  async deleteMenu(menu_id){
+  async deleteMenu(menu_id) {
     const loading = await this.loadingController.create();
     await loading.present();
     this.menusService.deleteMenu(menu_id).subscribe(
@@ -145,5 +144,4 @@ export class MainMenuPage implements OnInit {
       }
     );
   }
-
 }

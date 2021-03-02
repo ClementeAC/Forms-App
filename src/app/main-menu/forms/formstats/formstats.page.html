@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Stats of {{title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngFor="let question of questions" class="questions">
+    <ion-card class="title">
+      <h1>{{question.title_q}}</h1>
+      <div class="divisor"></div>
+      <p>{{question.description_q}}</p>
+    </ion-card>
+    <div *ngIf="question.selection == true">
+      <ion-card>
+        <ion-radio-group>
+          <ion-item *ngFor="let quest of question.value.split('|')">
+            <ion-label>{{quest}}</ion-label>
+            <ion-radio slot="start"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-card>
+    </div>
+    <div *ngIf="question.text == true">
+      <ion-card>
+        <ion-input
+          maxlength="{{question.response_size}}"
+          placeholder="Enter your answer here (Max. {{question.response_size}})"
+        ></ion-input>
+        <p *ngFor="let answer of answers" class="answers">{{answer.value}}</p>
+      </ion-card>
+    </div>
+    <div *ngIf="question.numeric == true">
+      <ion-card>
+        <ion-input
+          inputmode="numeric"
+          type="number"
+          placeholder="Enter your answer here (numbers only)"
+        ></ion-input>
+      </ion-card>
+    </div>
+    <div *ngIf="question.checklist == true">
+      <ion-card>
+        <ion-item *ngFor="let quest of question.value.split('|')">
+          <ion-label>{{quest}}</ion-label>
+          <ion-checkbox slot="start"></ion-checkbox>
+        </ion-item>
+      </ion-card>
+    </div>
+    <br />
+  </div>
+</ion-content>

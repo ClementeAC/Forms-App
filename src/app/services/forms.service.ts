@@ -12,13 +12,13 @@ export class FormsService {
       "https://api-rest-s.herokuapp.com/api/forms/question/" + formId
     );
   }
-////////////////////////////////////////////////////
-  getAnswers(questionId: string) {
+  ////////////////////////////////////////////////////
+  getAnswers(formId: string) {
     return this.http.get<any>(
-      "https://api-rest-s.herokuapp.com/api/forms/answer/" + questionId
+      "https://api-rest-s.herokuapp.com/api/forms/answer/" + formId
     );
   }
-////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////
   submitAnswer(formId: string, answers: object) {
     console.log(formId + "\n" + answers);
     /*return this.http.post(
@@ -26,8 +26,8 @@ export class FormsService {
       answers
     );*/
   }
-////////////////////////////////////////////////////
-  createQuestion(form: string){
+  ////////////////////////////////////////////////////
+  createQuestion(form: string) {
     //{ title_q, description_q, value, response_size, required, selection, text, numeric, checklist }
     return this.http.post(
       "https://api-rest-s.herokuapp.com/api/forms/form/",
@@ -35,34 +35,34 @@ export class FormsService {
     );
   }
 
-  createForm(form: string){
+  createForm(form: string) {
     return this.http.post(
       "https://api-rest-s.herokuapp.com/api/forms/form/",
       form
     );
   }
-////////////////////////////////////////////////////
-  updateForm(formId: string, form: string){
+  ////////////////////////////////////////////////////
+  updateForm(formId: string, form: string) {
     return this.http.put(
       "https://api-rest-s.herokuapp.com/api/forms/form/" + formId,
       form
     );
   }
-////////////////////////////////////////////////////
-  updateQuestion(questionId: string, question: string){
+  ////////////////////////////////////////////////////
+  updateQuestion(questionId: string, question: string) {
     return this.http.put(
       "https://api-rest-s.herokuapp.com/api/forms/question/" + questionId,
       question
     );
   }
 
-  deleteForm(formId: string){
+  deleteForm(formId: string) {
     return this.http.delete<any>(
       "https://api-rest-s.herokuapp.com/api/forms/form/" + formId
     );
   }
-////////////////////////////////////////////////////
-  deleteQuestion(questionId: string){
+  ////////////////////////////////////////////////////
+  deleteQuestion(questionId: string) {
     return this.http.delete<any>(
       "https://api-rest-s.herokuapp.com/api/forms/question/" + questionId
     );

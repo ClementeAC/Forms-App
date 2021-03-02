@@ -2,11 +2,16 @@
   <div *ngFor="let menu of menus" [routerLink]="['/main-menu', menu.menu_id]">
     <ion-card class="menu-card" button="true">
       <ion-card-header>
-        <ion-icon name="trash-outline" class="card-icon" *ngIf="admin == true" (click)="confirmDeleteMenu(menu.menu_id)"></ion-icon>
+        <ion-icon
+          name="trash-outline"
+          class="card-icon"
+          *ngIf="admin == true"
+          (click)="confirmDeleteMenu(menu.menu_id)"
+        ></ion-icon>
         <ion-card-subtitle> Menu </ion-card-subtitle>
         <ion-card-title class="titles">{{menu.title_menu}}</ion-card-title>
       </ion-card-header>
-      <ion-card-content >
+      <ion-card-content>
         <ion-icon name="folder-open-outline" class="card-icon"></ion-icon>
       </ion-card-content>
     </ion-card>
