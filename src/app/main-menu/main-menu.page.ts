@@ -28,7 +28,16 @@ export class MainMenuPage implements OnInit {
     this.menu.open("first");*/
   }
 
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: "Please wait...",
+      duration: 200,
+    });
+    await loading.present();
+  }
+
   ngOnInit() {
+    this.presentLoading();
     this.menuData = this.fb.group({
       title_menu: "",
       user_id: JSON.parse(localStorage.getItem("user")).user_id,
@@ -37,6 +46,7 @@ export class MainMenuPage implements OnInit {
   }
 
   ionViewWillEnter() {
+    this.presentLoading();
     this.menusService.getMenus().subscribe((data) => {
       this.menus = data;
     });
@@ -103,7 +113,7 @@ export class MainMenuPage implements OnInit {
   async confirmDeleteMenu(menu_id) {
     const alert = await this.alertController.create({
       header: "Delete Menu",
-      message: "sure to delete this menu? ",
+      message: "Are you sure you want to delete this menu?",
       buttons: [
         {
           text: "Cancel",

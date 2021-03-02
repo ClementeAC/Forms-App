@@ -16,9 +16,9 @@ export class MenuDetailsPage implements OnInit {
   menuData: FormGroup;
   formData: FormGroup;
   questionDefault: FormGroup;
-  menus= [];
-  recipeId: string; 
-  title = '';
+  menus = [];
+  recipeId: string;
+  title = "";
 
   constructor(
     private fb: FormBuilder,
@@ -27,11 +27,12 @@ export class MenuDetailsPage implements OnInit {
     private formService: FormsService,
     private alertController: AlertController,
     private loadingController: LoadingController,
-    private activatedRoute: ActivatedRoute,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit() {
-    this.admin = (JSON.parse(localStorage.getItem('user'))).admin;
+    this.presentLoading();
+    this.admin = JSON.parse(localStorage.getItem("user")).admin;
     this.activatedRoute.paramMap.subscribe((paramMap) => {
       this.recipeId = paramMap.get("menuId");
       this.menusService.getMenu(this.recipeId).subscribe((data) => {
@@ -41,33 +42,76 @@ export class MenuDetailsPage implements OnInit {
       });
     });
     this.menuData = this.fb.group({
-      title_menu: '',
+      title_menu: "",
       user_id: JSON.parse(localStorage.getItem("user")).user_id,
       submenu: this.recipeId,
     });
-    this.formData = this.fb.group({ 
-      menu_id: this.recipeId, 
-      title_form: '', 
-      description_form: null, 
-      locked: false
+    this.formData = this.fb.group({
+      menu_id: this.recipeId,
+      title_form: "",
+      description_form: null,
+      locked: false,
     });
-    this.questionDefault = this.fb.group({ 
-      form_id: '', 
-      title_q:'Pregunta', 
-      description_q: 'Descripcion', 
-      value: 'opcion 1|opcion 2', 
-      response_size: null, 
-      required: false, 
-      selection: true, 
-      text: false, 
-      numeric: false, 
-      checklist: false
+    this.questionDefault = this.fb.group({
+      form_id: "",
+      title_q: "Pregunta",
+      description_q: "Descripcion",
+      value: "opcion 1|opcion 2",
+      response_size: null,
+      required: false,
+      selection: true,
+      text: false,
+      numeric: false,
+      checklist: false,
     });
   }
 
+  ionViewWillEnter() {
+    this.presentLoading();
+    this.admin = JSON.parse(localStorage.getItem("user")).admin;
+    this.activatedRoute.paramMap.subscribe((paramMap) => {
+      this.recipeId = paramMap.get("menuId");
+      this.menusService.getMenu(this.recipeId).subscribe((data) => {
+        this.menus = data;
+        console.log(data);
+        this.title = data[0].title_menu;
+      });
+    });
+    this.menuData = this.fb.group({
+      title_menu: "",
+      user_id: JSON.parse(localStorage.getItem("user")).user_id,
+      submenu: this.recipeId,
+    });
+    this.formData = this.fb.group({
+      menu_id: this.recipeId,
+      title_form: "",
+      description_form: null,
+      locked: false,
+    });
+    this.questionDefault = this.fb.group({
+      form_id: "",
+      title_q: "Pregunta",
+      description_q: "Descripcion",
+      value: "opcion 1|opcion 2",
+      response_size: null,
+      required: false,
+      selection: true,
+      text: false,
+      numeric: false,
+      checklist: false,
+    });
+  }
 
- ////////////////////////////////////////////////////////////////////////
-  async addNewForm(){
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: "Please wait...",
+      duration: 300,
+    });
+    await loading.present();
+  }
+
+  ////////////////////////////////////////////////////////////////////////
+  async addNewForm() {
     const alert = await this.alertController.create({
       header: "Create New From",
       inputs: [
@@ -98,9 +142,9 @@ export class MenuDetailsPage implements OnInit {
 
     await alert.present();
   }
- ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
 
-  async addForm(){
+  async addForm() {
     const loading = await this.loadingController.create();
     await loading.present();
     this.formService.createForm(this.formData.value).subscribe(
@@ -108,12 +152,12 @@ export class MenuDetailsPage implements OnInit {
         await loading.dismiss();
         this.menus.push(res[0]);
         this.questionDefault.value.form_id = res[0].form_id;
-        this.formService.createQuestion(this.questionDefault.value).subscribe(
-          async (res) => {
+        this.formService
+          .createQuestion(this.questionDefault.value)
+          .subscribe(async (res) => {
             await loading.dismiss();
-          }
-        );
-        this.router.navigate(["./main-menu/"+this.recipeId]);
+          });
+        this.router.navigate(["./main-menu/" + this.recipeId]);
       },
       async (res) => {
         await loading.dismiss();
@@ -127,16 +171,14 @@ export class MenuDetailsPage implements OnInit {
     );
   }
 
-
-
   ////////////////////////////////////////////////////////////////////////
 
   ////////////////////////////////////////////////////////////////////////
 
-  async confirmDeleteForm(menu_id, form_id){
+  async confirmDeleteForm(menu_id, form_id) {
     const alert = await this.alertController.create({
       header: "Delete from",
-      message: "sure to delete this form?",
+      message: "Are you sure you want to delete this form?",
       buttons: [
         {
           text: "Cancel",
@@ -157,13 +199,13 @@ export class MenuDetailsPage implements OnInit {
     await alert.present();
   }
 
-  async deleteForm(menu_id, form_id){
+  async deleteForm(menu_id, form_id) {
     const loading = await this.loadingController.create();
     await loading.present();
     this.formService.deleteForm(form_id).subscribe(
       async (res) => {
         await loading.dismiss();
-        this.router.navigate(["./main-menu/"+menu_id]);
+        this.router.navigate(["./main-menu/" + menu_id]);
       },
       async (res) => {
         await loading.dismiss();
@@ -177,19 +219,9 @@ export class MenuDetailsPage implements OnInit {
     );
   }
 
-////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
 
-
-
-
-
-
-
-
-
-
-  
-////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
   async addMenu() {
     const loading = await this.loadingController.create();
     await loading.present();
@@ -244,7 +276,7 @@ export class MenuDetailsPage implements OnInit {
   }
 
   ////////////////////////////////////////////////////////////////////////
-  async confirmDeleteMenu(submenu, menu_id){
+  async confirmDeleteMenu(submenu, menu_id) {
     const alert = await this.alertController.create({
       header: "Delete Menu",
       message: "sure to delete this menu? ",
@@ -269,12 +301,12 @@ export class MenuDetailsPage implements OnInit {
     await alert.present();
   }
 
-  async deleteMenu(submenu, menu_id){
+  async deleteMenu(submenu, menu_id) {
     const loading = await this.loadingController.create();
     await loading.present();
     this.menusService.deleteMenu(menu_id).subscribe(
       async (res) => {
-        this.router.navigate(["./main-menu/"+submenu]);
+        this.router.navigate(["./main-menu/" + submenu]);
         await loading.dismiss();
       },
       async (res) => {
@@ -288,5 +320,5 @@ export class MenuDetailsPage implements OnInit {
       }
     );
   }
-////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
 }

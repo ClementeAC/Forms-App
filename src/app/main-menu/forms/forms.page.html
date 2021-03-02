@@ -10,6 +10,12 @@
   <form>
     <div *ngFor="let question of questions" class="questions">
       <ion-card class="title">
+        <ion-icon
+          name="trash-outline"
+          class="card-icon"
+          *ngIf="admin == true"
+          (click)="confirmDeleteQuestion(question.question_id)"
+        ></ion-icon>
         <h1>{{question.title_q}}</h1>
         <div class="divisor"></div>
         <p>{{question.description_q}}</p>

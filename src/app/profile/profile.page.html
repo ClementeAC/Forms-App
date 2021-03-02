@@ -5,7 +5,7 @@
         <ion-icon name="options-outline"></ion-icon>
       </ion-button>
       <ion-fab-list side="bottom">
-        <ion-button color="light" (click)="editInfo(1)">
+        <ion-button color="light" (click)="editInfo(1)" *ngIf="admin != true">
           <ion-icon name="pencil-outline"></ion-icon>
         </ion-button>
         <ion-button color="light" (click)="SignOff()">
@@ -20,7 +20,7 @@
       class="cancel-button"
       fill="clear"
       size="large"
-      (click)="editInfo(2)" 
+      (click)="editInfo(2)"
       *ngIf="isShowing === 1"
     >
       <ion-icon name="close-circle-outline"></ion-icon>
