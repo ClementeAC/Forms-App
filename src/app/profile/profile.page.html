@@ -20,7 +20,7 @@
       class="cancel-button"
       fill="clear"
       size="large"
-      (click)="editInfo(2)"
+      (click)="editInfo(2)" 
       *ngIf="isShowing === 1"
     >
       <ion-icon name="close-circle-outline"></ion-icon>
@@ -41,8 +41,10 @@
     ></ion-icon>
   </div>
   <div class="forms-answered" *ngIf="isShowing === 2 && admin != true">
-    <p class="forms-answered-title">Forms answered:</p>
-    <p class="forms-answered-value">69</p>
+    <p class="forms-answered-title">Forms answered: {{formsAnswered}}</p>
+    <div *ngFor="let form of statistics">
+      <p class="forms-answered-value">{{form}}</p>
+    </div>
   </div>
   <div class="data-edit" *ngIf="isShowing === 1">
     <p class="edit-data">Edit user data</p>

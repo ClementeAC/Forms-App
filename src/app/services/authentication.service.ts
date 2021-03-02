@@ -55,6 +55,7 @@ export class AuthenticationService {
       credentials
     );
   }
+
   updateUserData(
     credentials: {
       username;
@@ -68,6 +69,12 @@ export class AuthenticationService {
     return this.http.put(
       "https://api-rest-s.herokuapp.com/api/users/" + user,
       credentials
+    );
+  }
+  
+  getAnswersUser(userId: string) {
+    return this.http.get<any>(
+      "https://api-rest-s.herokuapp.com/api/forms/answerUser/" + userId
     );
   }
 }
