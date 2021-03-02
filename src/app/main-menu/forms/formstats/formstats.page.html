@@ -1,52 +1,31 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
     <ion-title>Stats of {{title}}</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-  <div *ngFor="let question of questions" class="questions">
+  <div *ngFor="let answer of answers" class="questions">
     <ion-card class="title">
-      <h1>{{question.title_q}}</h1>
-      <div class="divisor"></div>
-      <p>{{question.description_q}}</p>
+      <h1>{{answer.title_q}}</h1>
     </ion-card>
-    <div *ngIf="question.selection == true">
-      <ion-card>
-        <ion-radio-group>
-          <ion-item *ngFor="let quest of question.value.split('|')">
+      <ion-card *ngIf="answer.question != null">
+        <ion-item *ngFor="let quest of answer.question.split('|');">
+          <div *ngIf="answer.value == quest">
+            <ion-label>{{quest}}: {{statistics + 1}} ✔</ion-label>
+          </div>
+          <div *ngIf="answer.value != quest ">
             <ion-label>{{quest}}</ion-label>
-            <ion-radio slot="start"></ion-radio>
-          </ion-item>
-        </ion-radio-group>
-      </ion-card>
-    </div>
-    <div *ngIf="question.text == true">
-      <ion-card>
-        <ion-input
-          maxlength="{{question.response_size}}"
-          placeholder="Enter your answer here (Max. {{question.response_size}})"
-        ></ion-input>
-        <p *ngFor="let answer of answers" class="answers">{{answer.value}}</p>
-      </ion-card>
-    </div>
-    <div *ngIf="question.numeric == true">
-      <ion-card>
-        <ion-input
-          inputmode="numeric"
-          type="number"
-          placeholder="Enter your answer here (numbers only)"
-        ></ion-input>
-      </ion-card>
-    </div>
-    <div *ngIf="question.checklist == true">
-      <ion-card>
-        <ion-item *ngFor="let quest of question.value.split('|')">
-          <ion-label>{{quest}}</ion-label>
-          <ion-checkbox slot="start"></ion-checkbox>
+          </div>
         </ion-item>
       </ion-card>
-    </div>
+      <ion-card *ngIf="answer.question == null">
+        <ion-item>
+          <ion-label>{{answer.value}}</ion-label>
+        </ion-item>
+      </ion-card>
     <br />
   </div>
 </ion-content>
