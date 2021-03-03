@@ -30,7 +30,7 @@ export class FormsPage implements OnInit {
     question_type: "",
   };
   questions = [];
-  answers: [];
+  answers = [];
   answer = {
     user_id: JSON.parse(localStorage.getItem("user")).user_id,
     question_id: "",
@@ -72,16 +72,32 @@ export class FormsPage implements OnInit {
     });
   }
 
-  getAnswer(i,j,value) { 
+  getAnswe(i, value){
+    console.log(i,value);
+  }
 
+  getAnswer(i,j,typequestion) { 
+
+    if(typequestion == 1){
+      console.log('option')
+    }
+    if(typequestion == 2){
+      console.log('selection')
+    }
     console.log(i,j)
+    
     let prueba = this.questions[i].value.split('|');
     console.log(prueba[j]);
     this.answer.answers = prueba[j];
 
+    //
     this.answer.question_id = this.questions[i].question_id;
     console.log(this.questions[i].question_id);
     console.log(this.answer); 
+
+    //se le pushea a la lista que al final se le va a enviar
+    this.answers.push(this.answer);
+    console.log(this.answers);
 
     /*
       const loading = await this.loadingController.create();

@@ -24,17 +24,15 @@
         <ion-card>
           <ion-radio-group>
             <ion-item *ngFor="let quest of question.value.split('|'); let j = index">
-              <ion-label name="quest">{{quest}}</ion-label>
-              <ion-input (click)="getAnswer(i,j)">
-                <ion-radio slot="start"></ion-radio>
-              </ion-input>
+              <ion-label  >{{quest}}</ion-label>
+              <ion-radio slot="start" (click)="getAnswer(i,j,1)"></ion-radio>
             </ion-item>
           </ion-radio-group>
         </ion-card>
       </div>
       <div *ngIf="question.text == true">
         <ion-card>
-          <ion-input type="text"
+          <ion-input type="text" (click)="getAnswe(i,$event)"
             maxlength="{{question.response_size}}"
             placeholder="Enter your answer here (Max. {{question.response_size}})"
           ></ion-input>
@@ -42,7 +40,7 @@
       </div>
       <div *ngIf="question.numeric == true">
         <ion-card>
-          <ion-input [(ngModel)]="inputValueNumber[i]" [ngModelOptions]="{standalone: true}"
+          <ion-input (click)="getAnswe(i,$event)"
             type="number"
             placeholder="Enter your answer here (numbers only)"
           ></ion-input>
@@ -52,7 +50,7 @@
         <ion-card>
           <ion-item *ngFor="let quest of question.value.split('|'); let j = index">
             <ion-label>{{quest}}</ion-label>
-            <ion-checkbox slot="start" [(ngModel)]="inputValueSelect[i]" [ngModelOptions]="{standalone: true}"></ion-checkbox>
+            <ion-checkbox slot="start" (click)="getAnswer(i,j,2)"></ion-checkbox>
           </ion-item>
         </ion-card>
       </div>
