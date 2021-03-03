@@ -101,8 +101,8 @@ export class ProfilePage implements OnInit {
       async (res) => {
         await loading.dismiss();
 
-        var forms = res.map(function (form) { return form.title_form; });
-        var sorted = forms.sort();
+        let forms = res.map(function (form) { return form.title_form; });
+        let sorted = forms.sort();
 
         this.statistics = sorted.filter(function (value, index) {
           return value !== sorted[index + 1];
