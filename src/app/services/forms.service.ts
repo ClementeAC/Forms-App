@@ -19,10 +19,10 @@ export class FormsService {
     );
   }
 
-  submitAnswer(formId: string, answers: object) {
+  submitAnswer(answer: object) {
     return this.http.post(
-      "https://api-rest-s.herokuapp.com/api/forms/answer/" + formId,
-      answers
+      "https://api-rest-s.herokuapp.com/api/forms/answer/",
+      answer
     );
   }
 

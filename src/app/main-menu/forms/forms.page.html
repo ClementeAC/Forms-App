@@ -8,7 +8,7 @@
 </ion-header>
 <ion-content>
   <form>
-    <div *ngFor="let question of questions; let j = index" class="questions">
+    <div *ngFor="let question of questions; let i = index" class="questions">
       <ion-card class="title">
         <ion-icon
           name="trash-outline"
@@ -23,9 +23,9 @@
       <div *ngIf="question.selection == true">
         <ion-card>
           <ion-radio-group>
-            <ion-item *ngFor="let quest of question.value.split('|'); let i = index">
-              <ion-label>{{quest}}</ion-label>
-              <ion-input [(ngModel)]="inputValueOpcion[i]" [ngModelOptions]="{standalone: true}">
+            <ion-item *ngFor="let quest of question.value.split('|'); let j = index">
+              <ion-label name="quest">{{quest}}</ion-label>
+              <ion-input (click)="getAnswer(i,j)">
                 <ion-radio slot="start"></ion-radio>
               </ion-input>
             </ion-item>
@@ -42,7 +42,7 @@
       </div>
       <div *ngIf="question.numeric == true">
         <ion-card>
-          <ion-input [(ngModel)]="inputValueNumber[j]" [ngModelOptions]="{standalone: true}"
+          <ion-input [(ngModel)]="inputValueNumber[i]" [ngModelOptions]="{standalone: true}"
             type="number"
             placeholder="Enter your answer here (numbers only)"
           ></ion-input>
@@ -50,7 +50,7 @@
       </div>
       <div *ngIf="question.checklist == true">
         <ion-card>
-          <ion-item *ngFor="let quest of question.value.split('|'); let i = index">
+          <ion-item *ngFor="let quest of question.value.split('|'); let j = index">
             <ion-label>{{quest}}</ion-label>
             <ion-checkbox slot="start" [(ngModel)]="inputValueSelect[i]" [ngModelOptions]="{standalone: true}"></ion-checkbox>
           </ion-item>
@@ -60,7 +60,7 @@
     </div>
   </form>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-button color="light" *ngIf="admin != true" (click)="getAnswer()">
+    <ion-button color="light" *ngIf="admin != true">
       <ion-icon name="send"></ion-icon>
     </ion-button>
   </ion-fab>

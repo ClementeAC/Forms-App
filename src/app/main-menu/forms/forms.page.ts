@@ -22,12 +22,6 @@ export class FormsPage implements OnInit {
   ) {}
   
     
-
-
-  inputValueText= [];
-  inputValueNumber= [];
-  inputValueSelect= [];
-  inputValueOpcion= [];
   admin: string;
   recipeId: string;
   title: "";
@@ -40,7 +34,7 @@ export class FormsPage implements OnInit {
   answer = {
     user_id: JSON.parse(localStorage.getItem("user")).user_id,
     question_id: "",
-    answers: [],
+    answers: "",
   };
 
   ngOnInit() {
@@ -78,25 +72,22 @@ export class FormsPage implements OnInit {
     });
   }
 
-  getAnswer() {
-    /* for(const i = 0; i < length; i++){
-      if(this.answer.question_id ){
+  getAnswer(i,j,value) { 
 
-      }
-      this.answer.question_id = question_id 
-    }*/
-    console.log(
-                  this.inputValueText+'\n'+
-                  this.inputValueNumber+'\n'+
-                  this.inputValueSelect+'\n'+
-                  this.inputValueOpcion
-      ); 
+    console.log(i,j)
+    let prueba = this.questions[i].value.split('|');
+    console.log(prueba[j]);
+    this.answer.answers = prueba[j];
+
+    this.answer.question_id = this.questions[i].question_id;
+    console.log(this.questions[i].question_id);
+    console.log(this.answer); 
 
     /*
       const loading = await this.loadingController.create();
       await loading.present();
 
-      this.formsService.submitAnswer(recipeId, ["si", "Si"]).subscribe(
+      this.formsService.submitAnswer(this.answer).subscribe(
         async (res) => {
           await loading.dismiss();
         },
@@ -119,10 +110,6 @@ export class FormsPage implements OnInit {
       duration: 300,
     });
     await loading.present();
-  }
-
-  submitAnswer() {
-    this.formsService.submitAnswer(this.recipeId, this.answer);
   }
 
   goToFormstats() {
