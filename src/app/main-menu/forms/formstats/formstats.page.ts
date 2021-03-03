@@ -19,15 +19,10 @@ export class FormstatsPage implements OnInit {
   recipeId: string;
   statistics = [];
   questions = [];
-
-  answers = [{
-    title_form: '',
-    title_q: '',
-    question: '',
-    value: '',
-    user_id: '',
-    question_id: ''
-  }];
+  answers = [];
+  questionsTitle = [];
+  index = -1;
+  users = [];
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe((paramMap) => {
@@ -38,10 +33,10 @@ export class FormstatsPage implements OnInit {
         if(data[0].title_form != undefined){
           this.title = data[0].title_form;
 
-          //obtengo la cantidad de preguntas y sus ids
+          /*//obtengo la cantidad de preguntas y sus ids
           let questions = this.answers.map(function (res) { return res.question_id; });
           let sorted = questions.sort();
-  
+          
           let stats = sorted.filter(function (value, index) {
             return value !== sorted[index + 1];
           });
@@ -49,31 +44,27 @@ export class FormstatsPage implements OnInit {
           //obtengo la cantidad de usuarios y sus ids
           let user = this.answers.map(function (res) { return res.user_id; });
           let sort = user.sort();
-  
-          let users = sort.filter(function (value, index) {
+          
+          this.users = sort.filter(function (value, index) {
             return value !== sort[index + 1];
           });
-          console.log(users);
+          //console.log(users);
 
          // obtengo las respuestas pero en una sola lista 
           for (let i = 0; i < stats.length; i++) {
             for (let j = 0; j < this.answers.length; j++) {
               if (this.answers[j].question_id == stats[i]) {
-                if(this.answers[j].question != null){
-                  this.statistics.push(this.answers[j].value.split('|'));
-                }else{
-                  this.statistics.push(this.answers[j].value);
-                 }
+                this.statistics.push(this.answers[j].value);
               }
             }
           }
           console.log(this.statistics);
 
+          //obtengo los valores las respuestas separadas
           for (let i = 0; i < stats.length; i++) {
             this.questions.push(this.answers[i].question);
-            
           }
-          console.log(this.questions);
+          console.log(this.questions);*/
         }
         console.log(this.answers);
       });

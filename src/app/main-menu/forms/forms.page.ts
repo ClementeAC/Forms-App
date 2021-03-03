@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormsService } from "../../services/forms.service";
 import { ActivatedRoute, Router } from "@angular/router";
-import { AlertController, LoadingController } from "@ionic/angular";
+import { AlertController, LoadingController, NavController } from "@ionic/angular";
 import { Form, FormBuilder, FormGroup } from "@angular/forms";
 
 @Component({
@@ -12,6 +12,7 @@ import { Form, FormBuilder, FormGroup } from "@angular/forms";
 export class FormsPage implements OnInit {
   questionData: FormGroup;
   constructor(
+    public navCtrl: NavController,
     private formsService: FormsService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -19,7 +20,8 @@ export class FormsPage implements OnInit {
     private loadingController: LoadingController,
     private fb: FormBuilder
   ) {}
-
+  
+  inputValue: string = "";
   admin: string;
   recipeId: string;
   title: "";
@@ -77,8 +79,7 @@ export class FormsPage implements OnInit {
       }
       this.answer.question_id = question_id 
     }*/
-
-    console.log();
+    console.log(this.inputValue); 
 
     /*
       const loading = await this.loadingController.create();

@@ -3,30 +3,28 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title *ngIf="title == '|'">Not Exist Stats</ion-title>
-    <ion-title *ngIf="title != '|'">Stats of {{title}}</ion-title>
+    <ion-title>Stats of {{title}}</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <div *ngFor="let answer of questions" class="questions">
+  <div *ngFor="let answer of answers; let i = index" class="questions">
     <ion-card class="title">
-      <!--<h1>{{answer.title_q}}</h1>-->
+      <h1>{{answer.title_q}}</h1>
     </ion-card>
-      <ion-card *ngIf="answer != null">
-        <ion-item *ngFor="let quest of answer.split('|')">
-        <!--  <div *ngIf="answer == quest">
-            <ion-label>{{quest}}: {{statistics + 1}} ✔</ion-label>
-          </div>-->
-          <div *ngIf="answer != null">
+    <div *ngIf="answer != null">
+      <ion-card>
+          <ion-item *ngFor="let quest of answer.value.split('|')">
             <ion-label>{{quest}}</ion-label>
-          </div>
-        </ion-item>
+          </ion-item>
       </ion-card>
-     <!--  <ion-card *ngIf="answer.question == null">
-        <ion-item>
-          <ion-label>{{answer.value}}</ion-label>
-        </ion-item>
-      </ion-card>-->
+    </div>
+    <div *ngIf="answer == null">
+      <ion-card>
+          <ion-item>
+            <ion-label>{{answer.value}}</ion-label>
+          </ion-item>
+      </ion-card>
+    </div>
     <br />
   </div>
 </ion-content>

@@ -32,7 +32,7 @@
       </div>
       <div *ngIf="question.text == true">
         <ion-card>
-          <ion-input
+          <ion-input type="text" text-right id="input" [(ngModel)]="inputValue" [ngModelOptions] = "{standalone: true}"
             maxlength="{{question.response_size}}"
             placeholder="Enter your answer here (Max. {{question.response_size}})"
           ></ion-input>
@@ -58,7 +58,7 @@
     </div>
   </form>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-button color="light" *ngIf="admin != true">
+    <ion-button color="light" *ngIf="admin != true" (click)="getAnswer()">
       <ion-icon name="send"></ion-icon>
     </ion-button>
   </ion-fab>
