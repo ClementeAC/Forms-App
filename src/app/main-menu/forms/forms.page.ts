@@ -63,6 +63,13 @@ export class FormsPage implements OnInit {
     });
   }
 
+  ionViewWillEnter() {
+    this.presentLoading();
+    this.activatedRoute.paramMap.subscribe((paramMap) => {
+      this.recipeId = paramMap.get("formId");
+    });
+  }
+
   getAnswer() {
     /* for(const i = 0; i < length; i++){
       if(this.answer.question_id ){
@@ -280,6 +287,7 @@ export class FormsPage implements OnInit {
                     console.log("Es multiple selection");
                     this.questionData.value.checklist = true;
                     console.log(this.questionData.value);
+                    this.newMultiple();
                   }
                 }
               }
@@ -508,7 +516,7 @@ export class FormsPage implements OnInit {
       .subscribe(async (res) => {
         await loading.dismiss();
       });
-    this.router.navigate(["./main-menu/forms/" + this.recipeId]);
+    this.ionViewWillEnter();
 
     async (res) => {
       await loading.dismiss();
