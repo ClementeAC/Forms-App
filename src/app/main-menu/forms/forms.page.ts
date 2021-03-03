@@ -70,17 +70,28 @@ export class FormsPage implements OnInit {
     });
   }
 
-  prueba(){
+  sendAnswers(){
     console.log(this.answers);
+
+
+    let answers = this.index.map(function (res) { return res.index; });
+    let sorted = answers.sort();
+    
+    let answerList = sorted.filter(function (value, index) {
+      return value !== sorted[index + 1];
+    });
+
+    for (let i = 0; i < answerList.length; i++) {
+      console.log(answerList[i]);
+      let value = this.valueFromText[answerList[i]];
+      this.answers.push({user_id: this.user_id, question_id: this.questions[answerList[i]].question_id, value: value});
+    }
+    console.log(this.answers);
+
   }
 
-  getAnswe(i){
-    let value = this.valueFromText[i];
-    this.index.push(i);
-    if(value != undefined){
-      this.answers.push({user_id: this.user_id, question_id: this.questions[i].question_id, value: value});
-    }
-    console.log(this.index);
+  getAnswerText(i){
+    this.index.push({index: i});
   }
 
   getAnswer(i,j,typequestion) { 
