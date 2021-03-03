@@ -11,19 +11,22 @@
     <ion-card class="title">
       <h1>{{answer.title_q}}</h1>
     </ion-card>
-    <div *ngIf="answer != null">
+    <div >
+    <div *ngIf="answer.question != null">
       <ion-card>
-          <ion-item *ngFor="let quest of answer.value.split('|')">
-            <ion-label>{{quest}}</ion-label>
+          <ion-item *ngFor="let quest of answer.question.split('|')">
+            <ion-label *ngIf="quest == answer.value">{{quest}}:  ✔</ion-label>
+            <ion-label *ngIf="quest != answer.value">{{quest}} </ion-label>
           </ion-item>
       </ion-card>
     </div>
-    <div *ngIf="answer == null">
+    <div *ngIf="answer.question == null">
       <ion-card>
           <ion-item>
             <ion-label>{{answer.value}}</ion-label>
           </ion-item>
       </ion-card>
+    </div>
     </div>
     <br />
   </div>

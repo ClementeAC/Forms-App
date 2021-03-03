@@ -12,24 +12,21 @@ export class FormsService {
       "https://api-rest-s.herokuapp.com/api/forms/question/" + formId
     );
   }
-////////////////////////////////////////////////////
+
   getAnswers(formId: string) {
     return this.http.get<any>(
       "https://api-rest-s.herokuapp.com/api/forms/answer/" + formId
     );
   }
 
-  ////////////////////////////////////////////////////
   submitAnswer(formId: string, answers: object) {
-    console.log(formId + "\n" + answers);
-    /*return this.http.post(
+    return this.http.post(
       "https://api-rest-s.herokuapp.com/api/forms/answer/" + formId,
       answers
-    );*/
+    );
   }
-////////////////////////////////////////////////////
+
   createQuestion(form: string){
-    //{ form_id, title_q, description_q, value, response_size, required, selection, text, numeric, checklist }
     return this.http.post(
       "https://api-rest-s.herokuapp.com/api/forms/question/",
       form

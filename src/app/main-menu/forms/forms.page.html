@@ -25,14 +25,16 @@
           <ion-radio-group>
             <ion-item *ngFor="let quest of question.value.split('|'); let i = index">
               <ion-label>{{quest}}</ion-label>
-              <ion-radio slot="start" [(ngModel)]="inputValueOpcion[i]" [ngModelOptions]="{standalone: true}"></ion-radio>
+              <ion-input [(ngModel)]="inputValueOpcion[i]" [ngModelOptions]="{standalone: true}">
+                <ion-radio slot="start"></ion-radio>
+              </ion-input>
             </ion-item>
           </ion-radio-group>
         </ion-card>
       </div>
       <div *ngIf="question.text == true">
         <ion-card>
-          <ion-input type="text" id="input" [(ngModel)]="inputValueText[j]" [ngModelOptions]="{standalone: true}"
+          <ion-input type="text"
             maxlength="{{question.response_size}}"
             placeholder="Enter your answer here (Max. {{question.response_size}})"
           ></ion-input>

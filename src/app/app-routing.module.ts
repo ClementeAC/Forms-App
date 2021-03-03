@@ -46,30 +46,6 @@ const routes: Routes = [
     ],
   },
   {
-    path: "places",
-    children: [
-      {
-        path: "",
-        loadChildren: () =>
-          import("./places/places.module").then((m) => m.PlacesPageModule),
-      },
-      {
-        path: ":placeId",
-        loadChildren: () =>
-          import("./places/place-details/place-details.module").then(
-            (m) => m.PlaceDetailsPageModule
-          ),
-      },
-    ],
-  },
-  {
-    path: "new-place",
-    loadChildren: () =>
-      import("./places/place-add/place-add.module").then(
-        (m) => m.PlaceAddPageModule
-      ),
-  },
-  {
     path: "sign-in",
     loadChildren: () =>
       import("./sign-in/sign-in.module").then((m) => m.SignInPageModule),
