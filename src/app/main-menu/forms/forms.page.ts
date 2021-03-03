@@ -30,7 +30,7 @@ export class FormsPage implements OnInit {
   questions = [];
   answers: [];
   answer = {
-    user_id: "",
+    user_id: JSON.parse(localStorage.getItem("user")).user_id,
     question_id: "",
     answers: [],
   };
@@ -63,31 +63,15 @@ export class FormsPage implements OnInit {
     });
   }
 
-  ionViewWillEnter() {
-    this.presentLoading();
-    this.activatedRoute.paramMap.subscribe((paramMap) => {
-      this.recipeId = paramMap.get("formId");
-
-      this.admin = JSON.parse(localStorage.getItem("user")).admin;
-      this.answer.user_id = JSON.parse(localStorage.getItem("user")).user_id;
-
-      this.formsService.getForm(this.recipeId).subscribe((data) => {
-        this.questions = data;
-        this.title = data[0].title_form;
-        console.log(this.questions);
-      });
-    });
-  }
-
-  getAnswer(question_id, answer) {
+  getAnswer() {
     /* for(const i = 0; i < length; i++){
       if(this.answer.question_id ){
 
       }
-      this.answer.question_id = question_id
+      this.answer.question_id = question_id 
     }*/
 
-    console.log(question_id + "\n" + answer);
+    console.log();
 
     /*
       const loading = await this.loadingController.create();

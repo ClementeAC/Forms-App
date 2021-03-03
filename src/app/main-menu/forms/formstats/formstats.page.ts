@@ -16,22 +16,19 @@ export class FormstatsPage implements OnInit {
   ) {}
 
   recipeId: string;
-  questions = [];
-  title: "";
+  statistics = 0;
   answers = [];
+  title = '|';
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe((paramMap) => {
       this.recipeId = paramMap.get("formId");
-
-      this.formsService.getForm(this.recipeId).subscribe((data) => {
-        this.questions = data;
-        this.title = data[0].title_form;
-        console.log(this.questions);
-      });
-
       this.formsService.getAnswers(this.recipeId).subscribe((data) => {
+
         this.answers = data;
+        if(data[0].title_form != undefined){
+          this.title = data[0].title_form;
+        }
         console.log(this.answers);
       });
     });
