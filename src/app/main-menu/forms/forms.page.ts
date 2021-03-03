@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormsService } from "../../services/forms.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { AlertController, LoadingController, NavController } from "@ionic/angular";
-import { Form, FormBuilder, FormGroup } from "@angular/forms";
+import { Form, FormBuilder, FormGroup, FormControl } from "@angular/forms";
 
 @Component({
   selector: "app-forms",
@@ -21,7 +21,10 @@ export class FormsPage implements OnInit {
     private fb: FormBuilder
   ) {}
   
-  inputValue: string = "";
+  inputValueText= [];
+  inputValueNumber= [];
+  inputValueSelect= [];
+  inputValueOpcion= [];
   admin: string;
   recipeId: string;
   title: "";
@@ -79,7 +82,12 @@ export class FormsPage implements OnInit {
       }
       this.answer.question_id = question_id 
     }*/
-    console.log(this.inputValue); 
+    console.log(
+                  this.inputValueText+'\n'+
+                  this.inputValueNumber+'\n'+
+                  this.inputValueSelect+'\n'+
+                  this.inputValueOpcion
+      ); 
 
     /*
       const loading = await this.loadingController.create();

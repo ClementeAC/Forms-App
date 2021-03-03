@@ -8,7 +8,7 @@
 </ion-header>
 <ion-content>
   <form>
-    <div *ngFor="let question of questions" class="questions">
+    <div *ngFor="let question of questions; let i = index" class="questions">
       <ion-card class="title">
         <ion-icon
           name="trash-outline"
@@ -25,14 +25,14 @@
           <ion-radio-group>
             <ion-item *ngFor="let quest of question.value.split('|')">
               <ion-label>{{quest}}</ion-label>
-              <ion-radio slot="start"></ion-radio>
+              <ion-radio slot="start" [(ngModel)]="inputValueOpcion[i]" [ngModelOptions]="{standalone: true}"></ion-radio>
             </ion-item>
           </ion-radio-group>
         </ion-card>
       </div>
       <div *ngIf="question.text == true">
         <ion-card>
-          <ion-input type="text" text-right id="input" [(ngModel)]="inputValue" [ngModelOptions] = "{standalone: true}"
+          <ion-input type="text" id="input" [(ngModel)]="inputValueText[i]" [ngModelOptions]="{standalone: true}"
             maxlength="{{question.response_size}}"
             placeholder="Enter your answer here (Max. {{question.response_size}})"
           ></ion-input>
@@ -40,7 +40,7 @@
       </div>
       <div *ngIf="question.numeric == true">
         <ion-card>
-          <ion-input
+          <ion-input [(ngModel)]="inputValueNumber[i]" [ngModelOptions]="{standalone: true}"
             type="number"
             placeholder="Enter your answer here (numbers only)"
           ></ion-input>
@@ -50,7 +50,7 @@
         <ion-card>
           <ion-item *ngFor="let quest of question.value.split('|')">
             <ion-label>{{quest}}</ion-label>
-            <ion-checkbox slot="start"></ion-checkbox>
+            <ion-checkbox slot="start" [(ngModel)]="inputValueSelect[i]" [ngModelOptions]="{standalone: true}"></ion-checkbox>
           </ion-item>
         </ion-card>
       </div>
