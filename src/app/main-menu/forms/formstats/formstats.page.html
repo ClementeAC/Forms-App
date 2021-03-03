@@ -8,6 +8,7 @@
 </ion-header>
 <ion-content>
   <div *ngFor="let answer of answers; let i = index" class="questions">
+  <ion-card >
     <ion-card class="title">
       <h1>{{answer.title_q}}</h1>
     </ion-card>
@@ -29,5 +30,6 @@
     </div>
     </div>
     <br />
+  </ion-card>
   </div>
 </ion-content>

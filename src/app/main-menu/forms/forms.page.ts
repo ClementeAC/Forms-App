@@ -23,6 +23,7 @@ export class FormsPage implements OnInit {
   
     
   admin: string;
+  user_id= '';
   recipeId: string;
   title: "";
   form = {
@@ -31,20 +32,17 @@ export class FormsPage implements OnInit {
   };
   questions = [];
   answers = [];
-  answer = {
-    user_id: JSON.parse(localStorage.getItem("user")).user_id,
-    question_id: "",
-    answers: "",
-  };
+  valueFromText = [];
+  index=[];
 
   ngOnInit() {
     this.presentLoading();
     this.activatedRoute.paramMap.subscribe((paramMap) => {
       this.recipeId = paramMap.get("formId");
 
+      this.user_id = JSON.parse(localStorage.getItem("user")).user_id;
       this.admin = JSON.parse(localStorage.getItem("user")).admin;
-      this.answer.user_id = JSON.parse(localStorage.getItem("user")).user_id;
-
+      
       this.formsService.getForm(this.recipeId).subscribe((data) => {
         this.questions = data;
         this.title = data[0].title_form;
@@ -72,8 +70,17 @@ export class FormsPage implements OnInit {
     });
   }
 
-  getAnswe(i, value){
-    console.log(i,value);
+  prueba(){
+    console.log(this.answers);
+  }
+
+  getAnswe(i){
+    let value = this.valueFromText[i];
+    this.index.push(i);
+    if(value != undefined){
+      this.answers.push({user_id: this.user_id, question_id: this.questions[i].question_id, value: value});
+    }
+    console.log(this.index);
   }
 
   getAnswer(i,j,typequestion) { 
@@ -84,20 +91,10 @@ export class FormsPage implements OnInit {
     if(typequestion == 2){
       console.log('selection')
     }
-    console.log(i,j)
-    
-    let prueba = this.questions[i].value.split('|');
-    console.log(prueba[j]);
-    this.answer.answers = prueba[j];
 
-    //
-    this.answer.question_id = this.questions[i].question_id;
-    console.log(this.questions[i].question_id);
-    console.log(this.answer); 
-
+    let answ = this.questions[i].value.split('|');
     //se le pushea a la lista que al final se le va a enviar
-    this.answers.push(this.answer);
-    console.log(this.answers);
+    this.answers.push({user_id: this.user_id, question_id: this.questions[i].question_id, value: answ[j]});
 
     /*
       const loading = await this.loadingController.create();

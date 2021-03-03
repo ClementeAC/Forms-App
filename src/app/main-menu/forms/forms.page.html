@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <form>
+  <div>
     <div *ngFor="let question of questions; let i = index" class="questions">
       <ion-card class="title">
         <ion-icon
@@ -32,7 +32,7 @@
       </div>
       <div *ngIf="question.text == true">
         <ion-card>
-          <ion-input type="text" (click)="getAnswe(i,$event)"
+          <ion-input type="text" id="text" (click)="getAnswe(i)" [(ngModel)]="valueFromText[i]"
             maxlength="{{question.response_size}}"
             placeholder="Enter your answer here (Max. {{question.response_size}})"
           ></ion-input>
@@ -40,7 +40,7 @@
       </div>
       <div *ngIf="question.numeric == true">
         <ion-card>
-          <ion-input (click)="getAnswe(i,$event)"
+          <ion-input (click)="getAnswe(i)" [(ngModel)]="valueFromText[i]"
             type="number"
             placeholder="Enter your answer here (numbers only)"
           ></ion-input>
@@ -56,9 +56,9 @@
       </div>
       <br />
     </div>
-  </form>
+  </div>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-button color="light" *ngIf="admin != true">
+    <ion-button color="light" *ngIf="admin != true" (click)="prueba()">
       <ion-icon name="send"></ion-icon>
     </ion-button>
   </ion-fab>
