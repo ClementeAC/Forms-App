@@ -9,19 +9,8 @@ ion-footer {
 }
 
 ion-button {
-  --ion-color-primary: transparent;
-  --ion-color-primary-shade: transparent;
-  background: linear-gradient(45deg, #fc466b, #3f5efb);
-  width: 160px;
-  height: 50px;
-  padding: 1em;
-  border: none;
-  border-left: 1px solid $white;
-  border-top: 1px solid $white;
-  border-radius: 5000px;
-  backdrop-filter: blur(5px);
-  box-shadow: 4px 4px 60px rgba(0, 0, 0, 0.2);
-  color: #fff;
+  background-color: #000000;
+  color: #ffffff;
 }
 
 .welcome-card {

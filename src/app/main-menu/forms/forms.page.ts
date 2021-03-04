@@ -19,8 +19,9 @@ export class FormsPage implements OnInit {
     private alertController: AlertController,
     private loadingController: LoadingController,
     private fb: FormBuilder
-  ) {}
-  
+  ) {
+    this.answered = false
+  }
     
   admin: string;
   user_id= '';
@@ -34,6 +35,7 @@ export class FormsPage implements OnInit {
   answers = [];
   valueFromText = [];
   index=[];
+  answered: boolean;
 
   ngOnInit() {
     this.presentLoading();
@@ -65,18 +67,14 @@ export class FormsPage implements OnInit {
 
   ionViewWillEnter() {
     this.presentLoading();
-    this.activatedRoute.paramMap.subscribe((paramMap) => {
-      this.recipeId = paramMap.get("formId");
-    });
   }
 
-  sendAnswers(){
+  async sendAnswers(){
     console.log(this.answers);
-
 
     let answers = this.index.map(function (res) { return res.index; });
     let sorted = answers.sort();
-    
+      
     let answerList = sorted.filter(function (value, index) {
       return value !== sorted[index + 1];
     });
@@ -86,8 +84,41 @@ export class FormsPage implements OnInit {
       let value = this.valueFromText[answerList[i]];
       this.answers.push({user_id: this.user_id, question_id: this.questions[answerList[i]].question_id, value: value});
     }
-    console.log(this.answers);
 
+    if(this.answers.length != 0){
+      /*const loading = await this.loadingController.create();
+      await loading.present();
+
+      this.formsService.submitAnswer(this.answers).subscribe(
+        async (res) => {
+          await loading.dismiss();
+        },
+        async (res) => {
+          await loading.dismiss();
+          const alert = await this.alertController.create({
+            header: "There was an error submitting your answers",
+            message: res.error.error,
+            buttons: ["OK"],
+          });
+          await alert.present();
+        }
+      );*/
+
+      console.log(this.answers);
+      this.answered = true;
+
+    } else {
+      const loading = await this.loadingController.create();
+      await loading.present();
+
+      await loading.dismiss();
+      const alert = await this.alertController.create({
+        header: "Error!",
+        message: "No Puede enviar un form vacio",
+        buttons: ["OK"],
+      });
+      await alert.present();
+    }
   }
 
   getAnswerText(i){
@@ -95,37 +126,42 @@ export class FormsPage implements OnInit {
   }
 
   getAnswer(i,j,typequestion) { 
+    let answ = this.questions[i].value.split('|');
 
     if(typequestion == 1){
-      console.log('option')
+      console.log('option');
+      if(this.answers.length == 0){
+        console.log('primero')
+        this.answers.push({user_id: this.user_id, question_id: this.questions[i].question_id, value: answ[j]});
+      } else {
+        for (let l = 0; l < this.answers.length; l++) {
+          if(this.answers[l].question_id == this.questions[i].question_id){
+            console.log('si')
+            this.answers[l].value = answ[j];
+          } else {
+            console.log('no')
+            this.answers.push({user_id: this.user_id, question_id: this.questions[i].question_id, value: answ[j]});
+          }
+        }
+      }
     }
     if(typequestion == 2){
-      console.log('selection')
-    }
-
-    let answ = this.questions[i].value.split('|');
-    //se le pushea a la lista que al final se le va a enviar
-    this.answers.push({user_id: this.user_id, question_id: this.questions[i].question_id, value: answ[j]});
-
-    /*
-      const loading = await this.loadingController.create();
-      await loading.present();
-
-      this.formsService.submitAnswer(this.answer).subscribe(
-        async (res) => {
-          await loading.dismiss();
-        },
-        async (res) => {
-          await loading.dismiss();
-          const alert = await this.alertController.create({
-            header: "There was an error submitting your answer",
-            message: res.error.error,
-            buttons: ["OK"],
-          });
-          await alert.present();
+      console.log('selection');
+      if(this.answers.length == 0){
+        console.log('primero')
+        this.answers.push({user_id: this.user_id, question_id: this.questions[i].question_id, value: answ[j]});
+      } else {
+        for (let l = 0; l < this.answers.length; l++) {
+          if(this.answers[l].question_id == this.questions[i].question_id){
+            console.log('si')
+            this.answers[l].value = this.answers[l].value+'|'+answ[j];
+          } else {
+            console.log('no')
+            this.answers.push({user_id: this.user_id, question_id: this.questions[i].question_id, value: answ[j]});
+          }
         }
-      );
-    });*/
+      }
+    }
   }
 
   async presentLoading() {

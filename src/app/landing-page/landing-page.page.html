@@ -30,24 +30,16 @@
       </p>
     </ion-card-content>
   </ion-card>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="login()">
+    <ion-button color="light">
+      Login
+    </ion-button>
+  </ion-fab>
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed" (click)="register()">
+    <ion-button color="light">
+      Register
+    </ion-button>
+  </ion-fab>
+
 </ion-content>
-<ion-footer class="footer">
-  <ion-toolbar class="footer">
-    <ion-row class="footer">
-      <ion-col>
-        <ion-button
-          (click)="register()"
-        >
-          Register
-        </ion-button>
-      </ion-col>
-      <ion-col>
-        <ion-button
-          (click)="login()"
-        >
-          Login
-        </ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-toolbar>
-</ion-footer>

@@ -57,7 +57,7 @@
       <br />
     </div>
   </div>
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="answered != true">
     <ion-button color="light" *ngIf="admin != true" (click)="sendAnswers()">
       <ion-icon name="send"></ion-icon>
     </ion-button>
