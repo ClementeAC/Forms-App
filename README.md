@@ -8,3 +8,6 @@
 ### Hecho por:
 - Clemente Castejón
 - Heberto Urribarri
+
+### Descargalo aqui:
+- https://github.com/ClementeAC/Curso-Ionic4-y-Angular-1/releases/
