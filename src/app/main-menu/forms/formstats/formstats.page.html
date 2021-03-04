@@ -3,7 +3,8 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Stats of {{title}}</ion-title>
+    <ion-title *ngIf="title != '|'">Stats of {{title}}</ion-title>
+    <ion-title *ngIf="title == '|'">Non-existent statistics</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>

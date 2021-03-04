@@ -86,12 +86,18 @@ export class FormsPage implements OnInit {
     }
 
     if(this.answers.length != 0){
-      /*const loading = await this.loadingController.create();
+      const loading = await this.loadingController.create();
       await loading.present();
 
       this.formsService.submitAnswer(this.answers).subscribe(
         async (res) => {
           await loading.dismiss();
+          const alert = await this.alertController.create({
+            header: "Successful",
+            message: "Submitted form",
+            buttons: ["OK"],
+          });
+          await alert.present();
         },
         async (res) => {
           await loading.dismiss();
@@ -102,7 +108,7 @@ export class FormsPage implements OnInit {
           });
           await alert.present();
         }
-      );*/
+      );
 
       console.log(this.answers);
       this.answered = true;
@@ -114,7 +120,7 @@ export class FormsPage implements OnInit {
       await loading.dismiss();
       const alert = await this.alertController.create({
         header: "Error!",
-        message: "No Puede enviar un form vacio",
+        message: "Cannot submit an empty form",
         buttons: ["OK"],
       });
       await alert.present();
@@ -574,9 +580,10 @@ export class FormsPage implements OnInit {
       .createQuestion(this.questionData.value)
       .subscribe(async (res) => {
         await loading.dismiss();
+        console.log(res)
+        this.questions.push(res[0]);
+        this.ionViewWillEnter();
       });
-    this.ionViewWillEnter();
-
     async (res) => {
       await loading.dismiss();
       const alert = await this.alertController.create({
