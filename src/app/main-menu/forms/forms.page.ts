@@ -128,37 +128,37 @@ export class FormsPage implements OnInit {
   getAnswer(i,j,typequestion) { 
     let answ = this.questions[i].value.split('|');
 
-    if(typequestion == 1){
+    if(typequestion == 1 || typequestion == 2){
       console.log('option');
       if(this.answers.length == 0){
         console.log('primero')
         this.answers.push({user_id: this.user_id, question_id: this.questions[i].question_id, value: answ[j]});
       } else {
+        let flag = false;
+        let list = [];
         for (let l = 0; l < this.answers.length; l++) {
           if(this.answers[l].question_id == this.questions[i].question_id){
-            console.log('si')
-            this.answers[l].value = answ[j];
-          } else {
-            console.log('no')
-            this.answers.push({user_id: this.user_id, question_id: this.questions[i].question_id, value: answ[j]});
+            flag = true;
+            list.push(l);
           }
         }
-      }
-    }
-    if(typequestion == 2){
-      console.log('selection');
-      if(this.answers.length == 0){
-        console.log('primero')
-        this.answers.push({user_id: this.user_id, question_id: this.questions[i].question_id, value: answ[j]});
-      } else {
-        for (let l = 0; l < this.answers.length; l++) {
-          if(this.answers[l].question_id == this.questions[i].question_id){
+        if(typequestion == 1){
+          for (let l = 0; l < list.length; l++) {
+            console.log('si')
+            this.answers[list[l]].value = answ[j];
+            flag = true;
+          }
+        }
+        if(typequestion == 2){
+          for (let l = 0; l < list.length; l++) {
             console.log('si')
             this.answers[l].value = this.answers[l].value+'|'+answ[j];
-          } else {
-            console.log('no')
-            this.answers.push({user_id: this.user_id, question_id: this.questions[i].question_id, value: answ[j]});
+            flag = true;
           }
+        }
+        if(flag == false){
+          console.log('no')
+          this.answers.push({user_id: this.user_id, question_id: this.questions[i].question_id, value: answ[j]});
         }
       }
     }
