@@ -17,7 +17,14 @@ export class FormstatsPage implements OnInit {
 
   title = '|';
   recipeId: string;
-  answers = [];
+  answers = [{
+    question: "",
+    question_id: 0,
+    title_form: "",
+    title_q: "",
+    user_id: 0,
+    value: "",
+  }];
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe((paramMap) => {

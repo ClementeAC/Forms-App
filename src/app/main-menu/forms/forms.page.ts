@@ -55,7 +55,7 @@ export class FormsPage implements OnInit {
       form_id: "",
       title_q: "Pregunta",
       description_q: "",
-      value: "",
+      value: null,
       response_size: null,
       required: false,
       selection: false,

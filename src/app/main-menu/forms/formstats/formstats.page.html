@@ -9,12 +9,12 @@
 </ion-header>
 <ion-content>
   <div *ngFor="let answer of answers; let i = index" class="questions">
-  <ion-card >
+    {{answer.user_id}}
     <ion-card class="title">
-      <h1>{{answer.title_q}}</h1>
+      <h1> {{answer.title_q}}</h1>
     </ion-card>
     <div >
-    <div *ngIf="answer.question != null || answer.question != ''">
+    <div *ngIf="answer.question != null">
       <ion-card>
           <ion-item *ngFor="let quest of answer.question.split('|')">
             <ion-label *ngIf="quest == answer.value">{{quest}}:  ✔</ion-label>
@@ -22,7 +22,7 @@
           </ion-item>
       </ion-card>
     </div>
-    <div *ngIf="answer.question == null || answer.question == ''">
+    <div *ngIf="answer.question == null">
       <ion-card>
           <ion-item>
             <ion-label>{{answer.value}}</ion-label>
@@ -31,6 +31,5 @@
     </div>
     </div>
     <br />
-  </ion-card>
   </div>
 </ion-content>
