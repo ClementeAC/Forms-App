@@ -1,9 +1,6 @@
 # App movil con Ionic/Angular.
 
-### App base. Cuenta con las vistas:
-- Home
-- Login
-- Register
+### Aplicación Movil de Forms y Cuestionarios desarrollada utilizando Ionic con Angular.
 
 ### Hecho por:
 - Clemente Castejón
